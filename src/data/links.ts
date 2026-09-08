@@ -7,20 +7,29 @@ export const profile: Profile = {
   tagline: "Stavíme digitální produkty nové generace.",
   bannerSrc: "/images/image-mesh-gradient.png",
   avatarSrc: "/images/rezitlogo.png",
-  wifi: {
-    ssid: "Rezit Guest",
-    password: "rezit2026",
-    encryption: "WPA",
-  },
 };
 
 export const links: ProfileLink[] = [
   {
     id: "website",
     label: "Webové stránky",
-    href: "https://example.com",
+    href: "https://www.rezit.cz",
     description: "Více o nás a našich produktech",
     icon: "globe",
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/rezit.cz/",
+    description: "Sledujte nás na Instagramu",
+    icon: "instagram",
+  },
+  {
+    id: "tiktok",
+    label: "TikTok",
+    href: "https://www.tiktok.com/@rezit.cz",
+    description: "Krátká videa a novinky ze zákulisí",
+    icon: "tiktok",
   },
   {
     id: "email",
@@ -30,31 +39,10 @@ export const links: ProfileLink[] = [
     icon: "email",
   },
   {
-    id: "instagram",
-    label: "Instagram",
-    href: "https://instagram.com/",
-    description: "Sledujte nás na Instagramu",
-    icon: "instagram",
-  },
-  {
-    id: "tiktok",
-    label: "TikTok",
-    href: "https://tiktok.com/",
-    description: "Krátká videa a novinky ze zákulisí",
-    icon: "tiktok",
-  },
-  {
-    id: "google",
-    label: "Ohodnoťte nás na Google",
-    href: "https://g.page/r/PLACEHOLDER",
-    description: "Zpětná vazba nám pomáhá růst",
-    icon: "google",
-  },
-  {
-    id: "wifi",
-    label: "Připojit se na Wi‑Fi",
-    href: "#wifi",
-    description: "Rychlé připojení k naší síti",
-    icon: "wifi",
+    id: "phone",
+    label: "Telefon",
+    href: "tel:+420722793181",
+    description: "Zavolejte nám",
+    icon: "phone",
   },
 ];

@@ -3,10 +3,12 @@ export type LinkIcon =
   | "email"
   | "instagram"
   | "tiktok"
+  | "facebook"
   | "google"
   | "wifi"
   | "menu"
-  | "address";
+  | "address"
+  | "phone";
 
 export type ProfileLink = {
   id: string;
