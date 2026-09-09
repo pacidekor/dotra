@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { LinkButton } from "@/components/LinkButton";
 import { ProfileHeader } from "@/components/ProfileHeader";
+import { SaveContactButton } from "@/components/SaveContactButton";
 import { WifiSheet } from "@/components/WifiSheet";
 import type { Profile, ProfileLink } from "@/data/types";
 
@@ -20,7 +21,7 @@ export function ProfilePage({ profile, links }: ProfilePageProps) {
   return (
     <div className="relative flex min-h-dvh flex-1 flex-col">
       <div
-        className="pointer-events-none absolute inset-0 animate-reveal-fade bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,_#cfe6f5_0%,_transparent_60%),linear-gradient(180deg,_#e8f2fa_0%,_#d9eaf6_100%)]"
+        className="pointer-events-none absolute inset-0 animate-reveal-fade bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,_#e8e8e8_0%,_transparent_60%),linear-gradient(180deg,_#f2f2f2_0%,_#ebebeb_100%)]"
         aria-hidden
       />
 
@@ -47,6 +48,14 @@ export function ProfilePage({ profile, links }: ProfilePageProps) {
             className="mt-6 flex flex-col gap-2.5 px-4 md:mt-7 md:gap-3 md:px-5"
             aria-label="Odkazy"
           >
+            {profile.contact ? (
+              <SaveContactButton
+                name={profile.name}
+                avatarSrc={profile.avatarSrc}
+                contact={profile.contact}
+              />
+            ) : null}
+
             {links.map((link, index) => (
               <LinkButton
                 key={link.id}
@@ -59,7 +68,9 @@ export function ProfilePage({ profile, links }: ProfilePageProps) {
 
           <p
             className="animate-reveal-fade mt-auto px-4 pb-6 pt-8 text-center text-xs text-muted/70 md:mt-8 md:pb-8"
-            style={{ animationDelay: `${720 + links.length * 70}ms` }}
+            style={{
+              animationDelay: `${720 + links.length * 70}ms`,
+            }}
           >
             © {new Date().getFullYear()} {profile.name}
           </p>

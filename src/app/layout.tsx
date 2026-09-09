@@ -8,8 +8,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Rezit | Odkazy",
-  description: "Stavíme digitální produkty nové generace.",
+  title: "Dotra — NFC karty a digitální profily",
+  description:
+    "Dotra Cards propojují NFC kartičku s chytrým profilem. Vizitka, recenze, menu nebo podnik — pořadí si nastavíte podle cíle.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

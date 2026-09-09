@@ -24,10 +24,20 @@ export type WifiConfig = {
   encryption?: "WPA" | "WEP" | "nopass";
 };
 
+export type ContactConfig = {
+  phone: string;
+  email: string;
+  /** Primární web v kontaktu */
+  url: string;
+  organization?: string;
+  title?: string;
+};
+
 export type Profile = {
   name: string;
   tagline: string;
   bannerSrc: string;
   avatarSrc: string;
   wifi?: WifiConfig;
+  contact?: ContactConfig;
 };
