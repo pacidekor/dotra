@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
+import { useDashboard } from "@/components/dashboard/DashboardContext";
+import { createClient } from "@/utils/supabase/client";
 
 const navItems: {
   href: string;
@@ -31,8 +33,9 @@ const navItems: {
 
 export function DashboardSidebar() {
   const pathname = usePathname();
-  const router = useRouter();
+  const { slug } = useDashboard();
   const [menuOpen, setMenuOpen] = useState(false);
+  const publicHref = slug ? `/${slug}` : "/";
 
   useEffect(() => {
     setMenuOpen(false);
@@ -53,6 +56,13 @@ export function DashboardSidebar() {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [menuOpen]);
+
+  async function handleLogout() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    // Wipe leftover chunked auth cookies that can cause HTTP 431
+    window.location.href = "/auth/clear";
+  }
 
   return (
     <>
@@ -77,14 +87,14 @@ export function DashboardSidebar() {
 
         <div className="mt-auto space-y-2">
           <Link
-            href="/rezit"
+            href={publicHref}
             className="block rounded-xl border border-border px-3 py-2.5 text-center text-sm font-medium text-foreground transition-colors hover:bg-surface"
           >
             Veřejný profil
           </Link>
           <button
             type="button"
-            onClick={() => router.push("/login")}
+            onClick={handleLogout}
             className="w-full rounded-xl bg-foreground px-3 py-2.5 text-sm font-medium text-card transition-colors hover:bg-accent-hover"
           >
             Odhlásit se
@@ -142,7 +152,7 @@ export function DashboardSidebar() {
 
             <div className="mt-auto space-y-2 border-t border-border px-4 pt-4 pb-4">
               <Link
-                href="/rezit"
+                href={publicHref}
                 onClick={() => setMenuOpen(false)}
                 className="block rounded-xl border border-border px-3 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-surface"
               >
@@ -152,7 +162,7 @@ export function DashboardSidebar() {
                 type="button"
                 onClick={() => {
                   setMenuOpen(false);
-                  router.push("/login");
+                  void handleLogout();
                 }}
                 className="w-full rounded-xl bg-foreground px-3 py-3 text-sm font-medium text-card transition-colors hover:bg-accent-hover"
               >

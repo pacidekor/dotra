@@ -7,7 +7,8 @@ import { ProfileEditor } from "@/components/dashboard/ProfileEditor";
 import { useDashboard } from "@/components/dashboard/DashboardContext";
 
 export default function DashboardProfilePage() {
-  const { state, setProfile, setLinks, save, savedAt } = useDashboard();
+  const { state, setProfile, setLinks, save, savedAt, saving, saveError } =
+    useDashboard();
   const [previewOpen, setPreviewOpen] = useState(false);
 
   return (
@@ -23,7 +24,11 @@ export default function DashboardProfilePage() {
         </div>
 
         <div className="hidden items-center gap-3 sm:flex">
-          {savedAt ? (
+          {saveError ? (
+            <span className="max-w-[220px] truncate text-xs text-red-600">
+              {saveError}
+            </span>
+          ) : savedAt ? (
             <span className="text-xs text-muted">
               Uloženo{" "}
               {savedAt.toLocaleTimeString("cs-CZ", {
@@ -34,10 +39,11 @@ export default function DashboardProfilePage() {
           ) : null}
           <button
             type="button"
-            onClick={save}
-            className="rounded-xl bg-foreground px-4 py-2.5 text-sm font-medium text-card transition-colors hover:bg-accent-hover"
+            onClick={() => void save()}
+            disabled={saving}
+            className="rounded-xl bg-foreground px-4 py-2.5 text-sm font-medium text-card transition-colors hover:bg-accent-hover disabled:opacity-70"
           >
-            Uložit
+            {saving ? "Ukládám…" : "Uložit"}
           </button>
         </div>
       </div>
@@ -102,10 +108,11 @@ export default function DashboardProfilePage() {
           )}
           <button
             type="button"
-            onClick={save}
-            className="rounded-xl bg-foreground px-5 py-3 text-sm font-medium text-card"
+            onClick={() => void save()}
+            disabled={saving}
+            className="rounded-xl bg-foreground px-5 py-3 text-sm font-medium text-card disabled:opacity-70"
           >
-            Uložit
+            {saving ? "Ukládám…" : "Uložit"}
           </button>
         </div>
       </div>

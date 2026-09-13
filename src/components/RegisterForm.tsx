@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { createClient } from "@/utils/supabase/client";
 
-export function LoginForm() {
+export function RegisterForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,27 +16,37 @@ export function LoginForm() {
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setError(null);
-    setLoading(true);
 
+    if (password.length < 8) {
+      setError("Heslo musí mít alespoň 8 znaků.");
+      return;
+    }
+
+    setLoading(true);
     const supabase = createClient();
-    const { data, error: signInError } = await supabase.auth.signInWithPassword({
+    const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
     });
 
-    if (signInError) {
-      setError(signInError.message);
+    if (signUpError) {
+      setError(signUpError.message);
       setLoading(false);
       return;
     }
 
-    const { data: profile } = await supabase
-      .from("dotra_profiles")
-      .select("onboarding_completed_at")
-      .eq("id", data.user.id)
-      .maybeSingle();
+    if (!data.session) {
+      setError(
+        "Účet je vytvořený, ale chybí session. Vypněte Confirm email v Supabase Auth, nebo potvrďte e-mail.",
+      );
+      setLoading(false);
+      return;
+    }
 
-    router.push(profile?.onboarding_completed_at ? "/dashboard" : "/onboarding");
+    // Trigger may lag — ensure profile row exists
+    await supabase.from("dotra_profiles").upsert({ id: data.user!.id });
+
+    router.push("/onboarding");
     router.refresh();
   };
 
@@ -54,8 +64,10 @@ export function LoginForm() {
       </div>
 
       <div className="space-y-1 text-center">
-        <h1 className="text-xl font-semibold tracking-tight">Přihlášení</h1>
-        <p className="text-sm text-muted">Vstup do Dotra dashboardu</p>
+        <h1 className="text-xl font-semibold tracking-tight">Registrace</h1>
+        <p className="text-sm text-muted">
+          Vytvořte účet a nastavte si Dotra profil.
+        </p>
       </div>
 
       <div className="space-y-3">
@@ -77,11 +89,12 @@ export function LoginForm() {
           <input
             type="password"
             required
-            autoComplete="current-password"
+            minLength={8}
+            autoComplete="new-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             className="w-full rounded-xl border border-border bg-surface px-3.5 py-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
-            placeholder="••••••••"
+            placeholder="Minimálně 8 znaků"
           />
         </label>
       </div>
@@ -97,16 +110,13 @@ export function LoginForm() {
         disabled={loading}
         className="w-full rounded-xl bg-foreground px-4 py-3 text-sm font-medium text-card transition-colors hover:bg-accent-hover disabled:opacity-70"
       >
-        {loading ? "Přihlašuji…" : "Přihlásit"}
+        {loading ? "Vytvářím účet…" : "Registrovat"}
       </button>
 
       <p className="text-center text-sm text-muted">
-        Nemáte účet?{" "}
-        <Link
-          href="/register"
-          className="font-medium text-foreground underline-offset-2 hover:underline"
-        >
-          Registrovat
+        Už máte účet?{" "}
+        <Link href="/login" className="font-medium text-foreground underline-offset-2 hover:underline">
+          Přihlásit
         </Link>
       </p>
     </form>

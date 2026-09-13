@@ -31,12 +31,20 @@ export function SiteHeader() {
           </a>
         </nav>
 
-        <Link
-          href="/login"
-          className="rounded-full bg-foreground px-5 py-2.5 text-[13px] font-medium text-white transition-opacity hover:opacity-80"
-        >
-          Přihlásit
-        </Link>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            href="/login"
+            className="hidden rounded-full px-4 py-2.5 text-[13px] font-medium text-foreground/70 transition-colors hover:text-foreground sm:inline-flex"
+          >
+            Přihlásit
+          </Link>
+          <Link
+            href="/register"
+            className="rounded-full bg-foreground px-5 py-2.5 text-[13px] font-medium text-white transition-opacity hover:opacity-80"
+          >
+            Registrovat
+          </Link>
+        </div>
       </div>
     </header>
   );

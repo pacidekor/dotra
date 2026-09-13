@@ -30,17 +30,17 @@ export default function Home() {
               style={{ animationDelay: "200ms" }}
             >
               <Link
-                href="/login"
+                href="/register"
                 className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-sm font-medium text-white transition-opacity hover:opacity-80"
               >
-                Chci Dotra Cards
+                Registrovat
               </Link>
-              <a
-                href="#jak-to-funguje"
+              <Link
+                href="/login"
                 className="inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
               >
-                Jak to funguje
-              </a>
+                Přihlásit
+              </Link>
             </div>
           </div>
 
@@ -282,10 +282,10 @@ export default function Home() {
                 </p>
               </div>
               <Link
-                href="/login"
+                href="/register"
                 className="inline-flex h-12 shrink-0 items-center justify-center rounded-full bg-white px-8 text-sm font-medium text-foreground transition-opacity hover:opacity-90"
               >
-                Chci začít
+                Registrovat
               </Link>
             </div>
           </div>
