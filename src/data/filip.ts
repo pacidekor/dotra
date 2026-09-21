@@ -5,7 +5,7 @@ export const profile: Profile = {
   tagline: "Co-Founder of Rezit, Vouchy and Dotra",
   // Nahraď vlastními fotkami v /public/images/ a uprav cesty níž
   bannerSrc: "/images/image-mesh-gradient.png",
-  avatarSrc: "/images/rezitlogo.png",
+  avatarSrc: "/a90f7318-3f1a-4d3f-ab20-d322aeb99e93.jpg",
   contact: {
     phone: "+420722793181",
     email: "filip@rezit.cz",

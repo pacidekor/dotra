@@ -1,7 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ImagePlaceholder } from "@/components/marketing/ImagePlaceholder";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
+import { chillax } from "@/lib/fonts";
+
+const headline = chillax.className;
 
 export default function Home() {
   return (
@@ -10,53 +14,52 @@ export default function Home() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-[#f5f5f7] pt-16 sm:pt-[4.25rem]">
-          <div className="mx-auto w-[92%] max-w-[1700px] pt-14 pb-10 text-center sm:pt-20 sm:pb-14 lg:pt-24">
-            <p className="animate-reveal-fade text-[13px] font-medium tracking-[0.22em] text-foreground/40 uppercase">
-              Dotra Cards
-            </p>
-            <h1 className="animate-reveal-title mx-auto mt-5 max-w-4xl text-[clamp(2.6rem,6.5vw,5.75rem)] leading-[0.98] font-semibold tracking-[-0.03em]">
-              Nový způsob,
-              <br />
-              jak se předat dál.
+        <section className="relative overflow-hidden bg-white pt-[4.5rem] sm:pt-[5.25rem]">
+          <div className="mx-auto w-[92%] max-w-[1700px] pt-8 pb-5 text-center sm:pt-10 sm:pb-6 lg:pt-12">
+            <h1
+              className={`${headline} animate-reveal-title mx-auto flex w-full max-w-5xl flex-col items-center gap-1 text-[clamp(3.1rem,8vw,7rem)] leading-[0.98] font-bold tracking-[-0.035em] uppercase sm:gap-2`}
+            >
+              <span>Jedno přiložení.</span>
+              <span className="whitespace-nowrap">Spousta možností.</span>
             </h1>
-            <p className="animate-reveal-subtitle mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-foreground/55 sm:text-xl">
-              NFC kartička otevře váš Dotra profil. Osobní vizitka, podnik,
-              recenze nebo menu — pořadí si nastavíte podle toho, co má přijít
-              jako první.
+            <p className="animate-reveal-subtitle mx-auto mt-4 text-[17px] leading-relaxed text-foreground/55 sm:mt-5 sm:text-xl">
+              Menu, osobní profil, kontakty, Wi-Fi i recenze. Vše, co chcete
+              sdílet. Na jedno přiložení telefonu.
             </p>
             <div
-              className="animate-reveal-fade mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+              className="animate-reveal-fade mt-5 flex flex-col items-center justify-center gap-3 sm:mt-6 sm:flex-row"
               style={{ animationDelay: "200ms" }}
             >
               <Link
                 href="/register"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-sm font-medium text-white transition-opacity hover:opacity-80"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-[#ccfc4e] px-8 text-[15px] font-medium text-black transition-opacity hover:opacity-85 sm:h-14 sm:px-9 sm:text-base"
               >
-                Registrovat
+                Pořídit dotru.
               </Link>
-              <Link
-                href="/login"
-                className="inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
+              <a
+                href="#jak-to-funguje"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-[#f5f5f7] px-7 text-[15px] font-medium text-foreground transition-colors hover:bg-[#ececef] sm:h-14"
               >
-                Přihlásit
-              </Link>
+                Jak to funguje
+              </a>
             </div>
           </div>
 
           <div
-            className="animate-reveal-banner mx-auto w-[92%] max-w-[1700px]"
+            className="animate-reveal-banner mx-auto w-[min(92%,1100px)] sm:w-[min(92%,1280px)]"
             style={{ animationDelay: "80ms" }}
           >
-            <div className="overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
-              <ImagePlaceholder
-                label="Dotra Card + telefon"
-                aspect="aspect-[16/9]"
-                className="w-full sm:aspect-[21/9]"
-              />
-            </div>
+            <Image
+              src="/images/dotraheroilustracefixed.webp"
+              alt="Dotra Card a telefon"
+              width={2100}
+              height={900}
+              priority
+              className="h-auto w-full object-contain"
+              sizes="(max-width: 1280px) 92vw, 1280px"
+            />
           </div>
-          <div className="h-16 bg-gradient-to-b from-transparent to-white sm:h-24" />
+          <div className="h-10 bg-white sm:h-14" />
         </section>
 
         {/* Jak to funguje */}
@@ -66,7 +69,9 @@ export default function Home() {
         >
           <div className="mx-auto w-[92%] max-w-[1700px]">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <h2 className="max-w-xl text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
+              <h2
+                className={`${headline} max-w-xl text-3xl font-semibold tracking-[-0.03em] sm:text-5xl`}
+              >
                 Tři vteřiny
                 <span className="text-foreground/35"> od kontaktu k akci.</span>
               </h2>
@@ -124,7 +129,9 @@ export default function Home() {
                 <p className="text-[13px] font-medium tracking-[0.2em] text-foreground/35 uppercase">
                   Dotra Cards
                 </p>
-                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
+                <h2
+                  className={`${headline} mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-5xl`}
+                >
                   Fyzická karta,
                   <br />
                   která se nemění.
@@ -152,7 +159,9 @@ export default function Home() {
         >
           <div className="mx-auto w-[92%] max-w-[1700px]">
             <div className="max-w-3xl">
-              <h2 className="text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
+              <h2
+                className={`${headline} text-3xl font-semibold tracking-[-0.03em] sm:text-5xl`}
+              >
                 Stejná karta.
                 <span className="text-foreground/35"> Jiný záměr.</span>
               </h2>
@@ -221,7 +230,9 @@ export default function Home() {
                 <p className="text-[13px] font-medium tracking-[0.2em] text-foreground/35 uppercase">
                   Platforma
                 </p>
-                <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
+                <h2
+                  className={`${headline} mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.03em] sm:text-5xl`}
+                >
                   Pod každou kartou běží Dotra.
                 </h2>
               </div>
@@ -271,7 +282,9 @@ export default function Home() {
           <div className="mx-auto w-[92%] max-w-[1700px]">
             <div className="flex flex-col gap-8 rounded-[1.75rem] bg-foreground px-7 py-14 text-white sm:rounded-[2rem] sm:px-12 sm:py-20 lg:flex-row lg:items-end lg:justify-between lg:px-16">
               <div className="max-w-2xl">
-                <h2 className="text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
+                <h2
+                  className={`${headline} text-3xl font-semibold tracking-[-0.03em] sm:text-5xl`}
+                >
                   Připraveni nahradit
                   <br />
                   papír a QR chaos?
