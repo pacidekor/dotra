@@ -11,7 +11,7 @@ const IMAGE_H = 941;
  * Zapni při doladění hotspotů.
  * Boxy můžeš tahat a měnit velikost za rohy — dole uvidíš / zkopíruješ přesné pixely.
  */
-const DEBUG_HOTSPOTS = true;
+const DEBUG_HOTSPOTS = false;
 
 const baseImage = "/images/backgroundsekce.webp";
 
@@ -45,26 +45,26 @@ const initialHotspots: Hotspot[] = [
   {
     id: "card",
     label: "Do peněženky",
-    left: 300,
-    top: 400,
-    width: 360,
-    height: 290,
+    left: 352,
+    top: 486,
+    width: 405,
+    height: 248,
   },
   {
     id: "chip",
     label: "Na stůl",
-    left: 740,
-    top: 500,
-    width: 180,
-    height: 180,
+    left: 775,
+    top: 695,
+    width: 143,
+    height: 61,
   },
   {
     id: "stand",
     label: "Na recepci",
-    left: 1000,
-    top: 280,
-    width: 260,
-    height: 460,
+    left: 1017,
+    top: 247,
+    width: 356,
+    height: 472,
   },
 ];
 
