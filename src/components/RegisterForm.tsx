@@ -6,6 +6,9 @@ import { useState, type FormEvent } from "react";
 import { chillax } from "@/lib/fonts";
 import { createClient } from "@/utils/supabase/client";
 
+const inputClassName =
+  "w-full rounded-xl border border-[#e5e5e8] bg-white px-3.5 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-foreground/35 focus:border-foreground/30";
+
 export function RegisterForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -50,15 +53,15 @@ export function RegisterForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="space-y-8">
-      <div className="space-y-2">
+    <form onSubmit={onSubmit} className="space-y-7">
+      <div className="space-y-1.5">
         <h1
-          className={`${chillax.className} text-[clamp(1.85rem,4vw,2.35rem)] leading-[1.05] font-bold tracking-[-0.035em]`}
+          className={`${chillax.className} text-[clamp(1.75rem,3.5vw,2.15rem)] leading-[1.05] font-bold tracking-[-0.035em]`}
         >
           Vytvořte účet
         </h1>
         <p className="text-[15px] leading-relaxed text-foreground/55">
-          Založte si dotru a nastavte digitální profil během pár minut.
+          Založte si dotru během pár minut.
         </p>
       </div>
 
@@ -71,7 +74,7 @@ export function RegisterForm() {
             autoComplete="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="w-full rounded-2xl border border-border bg-[#f7f7f8] px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-foreground/35 focus:border-foreground/25 focus:bg-white"
+            className={inputClassName}
             placeholder="vas@email.cz"
           />
         </label>
@@ -85,14 +88,14 @@ export function RegisterForm() {
             autoComplete="new-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            className="w-full rounded-2xl border border-border bg-[#f7f7f8] px-4 py-3.5 text-sm text-foreground outline-none transition-colors placeholder:text-foreground/35 focus:border-foreground/25 focus:bg-white"
+            className={inputClassName}
             placeholder="Minimálně 8 znaků"
           />
         </label>
       </div>
 
       {error ? (
-        <p className="rounded-2xl border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-700">
+        <p className="rounded-xl border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-700">
           {error}
         </p>
       ) : null}
@@ -100,12 +103,12 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-full bg-[#ccfc4e] px-4 py-3.5 text-[15px] font-medium text-black transition-opacity hover:opacity-85 disabled:opacity-70"
+        className="w-full rounded-xl bg-foreground px-4 py-3.5 text-[15px] font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-70"
       >
         {loading ? "Vytvářím účet…" : "Registrovat"}
       </button>
 
-      <p className="text-[15px] text-foreground/55">
+      <p className="text-center text-[15px] text-foreground/55">
         Už máte účet?{" "}
         <Link
           href="/login"
