@@ -51,12 +51,20 @@ export function SiteHeader() {
           </a>
         </nav>
 
-        <Link
-          href="/register"
-          className="rounded-full bg-[#ccfc4e] px-4 py-2.5 text-sm font-medium text-black transition-opacity hover:opacity-85 sm:px-7 sm:py-3.5 sm:text-base"
-        >
-          Pořídit dotru.
-        </Link>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            href="/login"
+            className="rounded-full px-3 py-2.5 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground sm:px-4 sm:py-3 sm:text-base"
+          >
+            Přihlásit se
+          </Link>
+          <Link
+            href="/register"
+            className="rounded-full bg-[#ccfc4e] px-4 py-2.5 text-sm font-medium text-black transition-opacity hover:opacity-85 sm:px-7 sm:py-3.5 sm:text-base"
+          >
+            Registrovat
+          </Link>
+        </div>
       </div>
     </header>
   );
