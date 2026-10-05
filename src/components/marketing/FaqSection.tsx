@@ -41,10 +41,10 @@ export function FaqSection() {
             <h2
               className={`${chillax.className} text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
             >
-              Často se ptáte.
+              Ještě vás možná zajímá.
             </h2>
             <p className="mt-3 max-w-xs text-base leading-relaxed text-foreground/50 sm:mt-4 sm:text-lg">
-              To nejdůležitější kolem Dotry na jednom místě.
+              Vše důležité před prvním přiložením.
             </p>
           </div>
 
