@@ -71,7 +71,15 @@ export function LoginForm() {
         </label>
 
         <label className="block space-y-1.5">
-          <span className="text-sm font-medium text-foreground">Heslo</span>
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-sm font-medium text-foreground">Heslo</span>
+            <Link
+              href="/forgot-password"
+              className="text-sm font-medium text-foreground/55 underline-offset-2 transition-colors hover:text-foreground hover:underline"
+            >
+              Zapomněli jste heslo?
+            </Link>
+          </div>
           <input
             type="password"
             required
