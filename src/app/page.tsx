@@ -62,12 +62,6 @@ export default function Home() {
           <div className="h-10 bg-white sm:h-14" />
         </section>
 
-        {/* Intro sekce */}
-        <section
-          className="bg-cover bg-center bg-no-repeat py-24 sm:py-36"
-          style={{ backgroundImage: "url(/images/backgroundsekce.webp)" }}
-        />
-
         {/* Co všechno zvládne */}
         <section className="bg-white py-16 sm:py-24">
           <div className="mx-auto w-[92%] max-w-[1700px]">
@@ -141,6 +135,15 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Intro sekce */}
+        <section
+          className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url(/images/backgroundsekce.webp)",
+            aspectRatio: "1672 / 941",
+          }}
+        />
 
         {/* Jak to funguje */}
         <section
