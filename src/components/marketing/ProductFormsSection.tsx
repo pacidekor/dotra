@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 /** Originální rozměr všech backgroundsekce*.webp */
@@ -194,23 +193,25 @@ export function ProductFormsSection() {
       className="relative w-full overflow-hidden"
       style={{ aspectRatio: `${IMAGE_W} / ${IMAGE_H}` }}
     >
-      <Image
+      {/* Originální WebP bez Next optimalizace — jinak se fotky rozmažou */}
+      <img
         src={baseImage}
         alt="Dotra produkty: karta, čip a stojánek"
-        fill
-        priority
-        sizes="100vw"
-        className="pointer-events-none object-cover"
+        width={IMAGE_W}
+        height={IMAGE_H}
+        decoding="async"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
       />
 
       {hoverLayers.map((layer) => (
-        <Image
+        <img
           key={layer.id}
           src={layer.src}
           alt=""
-          fill
-          sizes="100vw"
-          className={`pointer-events-none object-cover transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          width={IMAGE_W}
+          height={IMAGE_H}
+          decoding="async"
+          className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
             active === layer.id ? "opacity-100" : "opacity-0"
           }`}
         />
