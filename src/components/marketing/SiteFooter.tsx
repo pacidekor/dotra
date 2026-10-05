@@ -86,10 +86,10 @@ export function SiteFooter() {
         </div>
 
         {/* Giant brand — přesně od levého po pravý okraj */}
-        <div className="pb-4 pt-2 sm:pb-6 sm:pt-4">
+        <div className="w-full pb-4 pt-2 sm:pb-6 sm:pt-4">
           <FitWidthText
             text="dotra."
-            className={`${chillax.className} leading-[0.8] font-bold tracking-[-0.07em] lowercase`}
+            className={`${chillax.className} font-bold tracking-[-0.06em] lowercase`}
           />
         </div>
 

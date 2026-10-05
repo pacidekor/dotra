@@ -18,11 +18,15 @@ export function FitWidthText({ text, className = "" }: FitWidthTextProps) {
     if (!container || !el) return;
 
     const fit = () => {
+      const available = container.clientWidth;
+      if (available <= 0) return;
+
+      // Měř při známé velikosti — NE přes React style (ten by to po renderu shodil).
       el.style.fontSize = "100px";
-      const width = el.scrollWidth;
-      if (width <= 0) return;
-      const next = (container.clientWidth / width) * 100;
-      el.style.fontSize = `${next}px`;
+      const measured = el.scrollWidth;
+      if (measured <= 0) return;
+
+      el.style.fontSize = `${(available / measured) * 100}px`;
     };
 
     const run = async () => {
@@ -31,7 +35,8 @@ export function FitWidthText({ text, className = "" }: FitWidthTextProps) {
       } catch {
         // ignore
       }
-      fit();
+      // Dvojitý rAF — po layoutu a po načtení fontu
+      requestAnimationFrame(() => requestAnimationFrame(fit));
     };
 
     run();
@@ -39,14 +44,13 @@ export function FitWidthText({ text, className = "" }: FitWidthTextProps) {
     const observer = new ResizeObserver(() => fit());
     observer.observe(container);
     return () => observer.disconnect();
-  }, [text]);
+  }, [text, className]);
 
   return (
-    <div ref={containerRef} className="w-full overflow-hidden">
+    <div ref={containerRef} className="w-full">
       <p
         ref={textRef}
-        className={`whitespace-nowrap ${className}`}
-        style={{ fontSize: "100px" }}
+        className={`m-0 whitespace-nowrap leading-none ${className}`}
       >
         {text}
       </p>
