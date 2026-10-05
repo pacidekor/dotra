@@ -41,6 +41,52 @@ export function publicStorageUrl(
   return `${base}/storage/v1/object/public/${bucket}/${path}`;
 }
 
+type StorageUploader = {
+  storage: {
+    from: (bucket: string) => {
+      upload: (
+        path: string,
+        file: File,
+        options?: { upsert?: boolean; contentType?: string },
+      ) => PromiseLike<{ error: { message: string } | null }>;
+    };
+  };
+};
+
+/** Upload path + public URL; throws with a Czech message on storage bucket errors. */
+export async function uploadProfileImageFile(
+  supabase: StorageUploader,
+  userId: string,
+  file: File,
+  bucket: "avatars" | "banners",
+): Promise<{ path: string; publicUrl: string }> {
+  const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
+  const path = `${userId}/${Date.now()}.${ext}`;
+  const { error: uploadError } = await supabase.storage
+    .from(bucket)
+    .upload(path, file, { upsert: true, contentType: file.type });
+
+  if (uploadError) {
+    const message = uploadError.message || "";
+    if (
+      message.toLowerCase().includes("bucket") ||
+      message.toLowerCase().includes("not found")
+    ) {
+      throw new Error(
+        "Úložiště fotek ještě není vytvořené. V Supabase spusť migraci storage (avatars/banners).",
+      );
+    }
+    throw new Error(message || "Upload obrázku selhal.");
+  }
+
+  const publicUrl = publicStorageUrl(bucket, path);
+  if (!publicUrl) {
+    throw new Error("Nepodařilo se sestavit URL obrázku.");
+  }
+
+  return { path, publicUrl };
+}
+
 export function profileFromRow(row: DotraProfileRow): Profile {
   return {
     name: row.display_name || "Váš profil",

@@ -13,6 +13,7 @@ import {
   type DashboardState,
 } from "@/data/dashboard-mock";
 import type { Profile, ProfileLink } from "@/data/types";
+import { uploadProfileImageFile } from "@/lib/dotra-profile";
 import { createClient } from "@/utils/supabase/client";
 
 type DashboardContextValue = {
@@ -21,9 +22,14 @@ type DashboardContextValue = {
   slug: string | null;
   setProfile: (profile: Profile) => void;
   setLinks: (links: ProfileLink[]) => void;
+  uploadImage: (
+    kind: "avatar" | "banner",
+    file: File,
+  ) => Promise<void>;
   save: () => Promise<void>;
   savedAt: Date | null;
   saving: boolean;
+  uploadingImage: "avatar" | "banner" | null;
   saveError: string | null;
 };
 
@@ -51,6 +57,9 @@ export function DashboardProvider({
   });
   const [savedAt, setSavedAt] = useState<Date | null>(null);
   const [saving, setSaving] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState<
+    "avatar" | "banner" | null
+  >(null);
   const [saveError, setSaveError] = useState<string | null>(null);
 
   const setProfile = useCallback((profile: Profile) => {
@@ -60,6 +69,60 @@ export function DashboardProvider({
   const setLinks = useCallback((links: ProfileLink[]) => {
     setState((prev) => ({ ...prev, links }));
   }, []);
+
+  const uploadImage = useCallback(
+    async (kind: "avatar" | "banner", file: File) => {
+      setUploadingImage(kind);
+      setSaveError(null);
+      const supabase = createClient();
+      const bucket = kind === "avatar" ? "avatars" : "banners";
+      const column = kind === "avatar" ? "avatar_path" : "banner_path";
+      const previewField = kind === "avatar" ? "avatarSrc" : "bannerSrc";
+      const previousUrl =
+        kind === "avatar" ? state.profile.avatarSrc : state.profile.bannerSrc;
+      const localUrl = URL.createObjectURL(file);
+
+      setState((prev) => ({
+        ...prev,
+        profile: { ...prev.profile, [previewField]: localUrl },
+      }));
+
+      try {
+        const { path, publicUrl } = await uploadProfileImageFile(
+          supabase,
+          profileId,
+          file,
+          bucket,
+        );
+
+        const { error: updateError } = await supabase
+          .from("dotra_profiles")
+          .update({ [column]: path })
+          .eq("id", profileId);
+
+        if (updateError) throw updateError;
+
+        setState((prev) => ({
+          ...prev,
+          profile: { ...prev.profile, [previewField]: publicUrl },
+        }));
+        URL.revokeObjectURL(localUrl);
+        setSavedAt(new Date());
+      } catch (err) {
+        setState((prev) => ({
+          ...prev,
+          profile: { ...prev.profile, [previewField]: previousUrl },
+        }));
+        URL.revokeObjectURL(localUrl);
+        setSaveError(
+          err instanceof Error ? err.message : "Upload obrázku selhal.",
+        );
+      } finally {
+        setUploadingImage(null);
+      }
+    },
+    [profileId, state.profile.avatarSrc, state.profile.bannerSrc],
+  );
 
   const save = useCallback(async () => {
     setSaving(true);
@@ -111,9 +174,11 @@ export function DashboardProvider({
       slug,
       setProfile,
       setLinks,
+      uploadImage,
       save,
       savedAt,
       saving,
+      uploadingImage,
       saveError,
     }),
     [
@@ -122,9 +187,11 @@ export function DashboardProvider({
       slug,
       setProfile,
       setLinks,
+      uploadImage,
       save,
       savedAt,
       saving,
+      uploadingImage,
       saveError,
     ],
   );

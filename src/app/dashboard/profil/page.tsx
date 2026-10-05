@@ -7,8 +7,17 @@ import { ProfileEditor } from "@/components/dashboard/ProfileEditor";
 import { useDashboard } from "@/components/dashboard/DashboardContext";
 
 export default function DashboardProfilePage() {
-  const { state, setProfile, setLinks, save, savedAt, saving, saveError } =
-    useDashboard();
+  const {
+    state,
+    setProfile,
+    setLinks,
+    uploadImage,
+    save,
+    savedAt,
+    saving,
+    uploadingImage,
+    saveError,
+  } = useDashboard();
   const [previewOpen, setPreviewOpen] = useState(false);
 
   return (
@@ -75,7 +84,12 @@ export default function DashboardProfilePage() {
             <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-muted">
               Základní údaje
             </h2>
-            <ProfileEditor profile={state.profile} onChange={setProfile} />
+            <ProfileEditor
+              profile={state.profile}
+              onChange={setProfile}
+              onUploadImage={(kind, file) => void uploadImage(kind, file)}
+              uploadingImage={uploadingImage}
+            />
           </section>
 
           <section className="space-y-3">
