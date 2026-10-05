@@ -63,7 +63,7 @@ export function FaqSection() {
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpen(isOpen ? -1 : index)}
-                    className="flex w-full items-center gap-4 py-5 text-left sm:gap-6 sm:py-6"
+                    className="flex w-full cursor-pointer items-center gap-4 py-5 text-left sm:gap-6 sm:py-6"
                   >
                     <span className="min-w-0 flex-1 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
                       {item.q}
