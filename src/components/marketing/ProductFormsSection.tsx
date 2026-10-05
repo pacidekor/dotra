@@ -32,6 +32,35 @@ const hoverLayers = [
 
 type HoverId = (typeof hoverLayers)[number]["id"];
 
+const productInfo: Record<
+  HoverId,
+  {
+    eyebrow: string;
+    title: string;
+    text: string;
+    tags: string[];
+  }
+> = {
+  card: {
+    eyebrow: "Osobní vizitka",
+    title: "Do peněženky.",
+    text: "Nejvhodnější jako osobní vizitka. Váš design, jméno i firma. Uvnitř klasika — kontakt, sociální sítě, web a další odkazy.",
+    tags: ["Kontakt", "Web", "Sociální sítě"],
+  },
+  chip: {
+    eyebrow: "Gastro & provoz",
+    title: "Na stůl.",
+    text: "Cíleně pro restaurace a kavárny. Nalepené na stole — host přiloží telefon a má menu, recenze i web bez ptaní obsluhy.",
+    tags: ["Menu", "Recenze", "Web"],
+  },
+  stand: {
+    eyebrow: "Firma & recepce",
+    title: "Na recepci.",
+    text: "Prezentace podniku na místě. Ideální na recepci — nebo rovnou jen na recenze, menu a to nejdůležitější, co má návštěvník udělat.",
+    tags: ["Prezentace", "Recenze", "Menu"],
+  },
+};
+
 type Hotspot = {
   id: HoverId;
   label: string;
@@ -100,8 +129,13 @@ export function ProductFormsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [hotspots, setHotspots] = useState(initialHotspots);
   const [active, setActive] = useState<HoverId | null>(null);
+  const [panel, setPanel] = useState<HoverId | null>(null);
   const [drag, setDrag] = useState<DragMode | null>(null);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (active) setPanel(active);
+  }, [active]);
 
   const clientToImage = useCallback((clientX: number, clientY: number) => {
     const rect = sectionRef.current?.getBoundingClientRect();
@@ -318,6 +352,47 @@ export function ProductFormsSection() {
           ) : null}
         </div>
       ))}
+
+      {/* Hover info card */}
+      <div
+        className={`pointer-events-none absolute bottom-[7%] left-[4%] z-20 w-[min(90%,22rem)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          active
+            ? "translate-y-0 opacity-100"
+            : "translate-y-3 opacity-0"
+        }`}
+      >
+        {panel ? (
+          <div
+            key={panel}
+            className="rounded-[1.35rem] border border-black/[0.06] bg-white/90 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] backdrop-blur-xl sm:p-6"
+          >
+            <div className="flex items-center gap-2">
+              <span className="size-1.5 rounded-full bg-[#ccfc4e]" />
+              <p className="text-[11px] font-medium tracking-[0.16em] text-foreground/40 uppercase">
+                {productInfo[panel].eyebrow}
+              </p>
+            </div>
+            <h3
+              className={`${chillax.className} mt-3 text-2xl leading-tight font-bold tracking-[-0.03em] sm:text-[1.75rem]`}
+            >
+              {productInfo[panel].title}
+            </h3>
+            <p className="mt-2.5 text-[14px] leading-relaxed text-foreground/55 sm:text-[15px]">
+              {productInfo[panel].text}
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {productInfo[panel].tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full bg-[#f0f0f2] px-3 py-1 text-[12px] font-medium text-foreground/70"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ) : null}
+      </div>
 
       {DEBUG_HOTSPOTS ? (
         <div className="absolute bottom-3 left-3 right-3 z-20 flex flex-col gap-2 rounded-xl bg-black/80 p-3 text-white sm:left-auto sm:right-3 sm:w-[360px]">
