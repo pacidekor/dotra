@@ -43,7 +43,7 @@ export function ThreeStepsSection() {
           </p>
         </div>
 
-        <div className="mt-12 grid items-start gap-10 lg:mt-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-14 xl:gap-16">
+        <div className="mt-12 grid items-start gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-14 xl:gap-16">
           <div className="border-t border-black/[0.08]">
             {steps.map((step, index) => {
               const isOpen = open === index;
@@ -108,10 +108,10 @@ export function ThreeStepsSection() {
             })}
           </div>
 
-          <div className="w-full max-w-[520px] justify-self-center overflow-hidden rounded-[1.5rem] sm:rounded-[1.75rem] lg:max-w-[85%] lg:justify-self-end">
+          <div className="w-full overflow-hidden rounded-[1.5rem] sm:rounded-[1.75rem]">
             <ImagePlaceholder
               label="Dotra ve třech krocích"
-              aspect="aspect-square"
+              aspect="aspect-[8/5]"
             />
           </div>
         </div>
