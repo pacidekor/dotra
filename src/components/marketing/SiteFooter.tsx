@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FitWidthText } from "@/components/marketing/FitWidthText";
 import { chillax } from "@/lib/fonts";
 
 export function SiteFooter() {
@@ -84,13 +85,12 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Giant brand */}
-        <div className="@container w-full overflow-hidden pb-4 pt-2 sm:pb-6 sm:pt-4">
-          <p
-            className={`${chillax.className} w-full whitespace-nowrap text-[22.5cqw] leading-[0.8] font-bold tracking-[-0.07em] lowercase`}
-          >
-            dotra.
-          </p>
+        {/* Giant brand — přesně od levého po pravý okraj */}
+        <div className="pb-4 pt-2 sm:pb-6 sm:pt-4">
+          <FitWidthText
+            text="dotra."
+            className={`${chillax.className} leading-[0.8] font-bold tracking-[-0.07em] lowercase`}
+          />
         </div>
 
         {/* Legal */}
