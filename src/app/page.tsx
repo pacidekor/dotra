@@ -76,6 +76,7 @@ export default function Home() {
                 {
                   title: "Kontakt, který nezapadne.",
                   subtitle: "Sdílejte kontakt, web i sociální sítě.",
+                  image: "/images/img1.webp",
                 },
                 {
                   title: "Váš podnik. Na jednom místě.",
@@ -88,7 +89,16 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="relative flex aspect-[4/5] flex-col rounded-[1.5rem] bg-[#f5f5f7] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8"
+                  className={`relative flex aspect-[4/5] flex-col overflow-hidden rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8 ${
+                    item.image
+                      ? "bg-cover bg-center bg-no-repeat"
+                      : "bg-[#f5f5f7]"
+                  }`}
+                  style={
+                    item.image
+                      ? { backgroundImage: `url(${item.image})` }
+                      : undefined
+                  }
                 >
                   <h3
                     className={`${headline} whitespace-nowrap text-[clamp(0.95rem,1.9vw,1.65rem)] leading-tight font-semibold tracking-[-0.03em]`}
