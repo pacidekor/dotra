@@ -9,6 +9,8 @@ import { useDashboard } from "@/components/dashboard/DashboardContext";
 export default function DashboardProfilePage() {
   const {
     state,
+    slug,
+    setSlug,
     setProfile,
     setLinks,
     uploadImage,
@@ -86,7 +88,9 @@ export default function DashboardProfilePage() {
             </h2>
             <ProfileEditor
               profile={state.profile}
+              slug={slug}
               onChange={setProfile}
+              onSlugChange={setSlug}
               onUploadImage={(kind, file) => void uploadImage(kind, file)}
               uploadingImage={uploadingImage}
             />

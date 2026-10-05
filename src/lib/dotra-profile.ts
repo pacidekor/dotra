@@ -121,6 +121,31 @@ export function slugify(value: string) {
     .slice(0, 48);
 }
 
+export const RESERVED_SLUGS = [
+  "dashboard",
+  "login",
+  "register",
+  "forgot-password",
+  "reset-password",
+  "onboarding",
+  "auth",
+  "tomas",
+  "filip",
+  "rezit",
+  "ukaplicky",
+  "api",
+] as const;
+
+/** Returns Czech error message, or null when slug is usable. */
+export function validateSlugInput(raw: string): string | null {
+  const next = slugify(raw);
+  if (!next) return "Zadejte platný slug URL.";
+  if ((RESERVED_SLUGS as readonly string[]).includes(next)) {
+    return "Tento slug je rezervovaný, zvolte jiný.";
+  }
+  return null;
+}
+
 export const DEFAULT_ONBOARDING_LINKS: Omit<
   DotraLinkRow,
   "id" | "profile_id"

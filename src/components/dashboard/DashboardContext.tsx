@@ -13,19 +13,21 @@ import {
   type DashboardState,
 } from "@/data/dashboard-mock";
 import type { Profile, ProfileLink } from "@/data/types";
-import { uploadProfileImageFile } from "@/lib/dotra-profile";
+import {
+  slugify,
+  uploadProfileImageFile,
+  validateSlugInput,
+} from "@/lib/dotra-profile";
 import { createClient } from "@/utils/supabase/client";
 
 type DashboardContextValue = {
   state: DashboardState;
   profileId: string;
-  slug: string | null;
+  slug: string;
+  setSlug: (slug: string) => void;
   setProfile: (profile: Profile) => void;
   setLinks: (links: ProfileLink[]) => void;
-  uploadImage: (
-    kind: "avatar" | "banner",
-    file: File,
-  ) => Promise<void>;
+  uploadImage: (kind: "avatar" | "banner", file: File) => Promise<void>;
   save: () => Promise<void>;
   savedAt: Date | null;
   saving: boolean;
@@ -46,7 +48,7 @@ type DashboardProviderProps = {
 export function DashboardProvider({
   children,
   profileId,
-  slug,
+  slug: initialSlug,
   initialProfile,
   initialLinks,
 }: DashboardProviderProps) {
@@ -55,6 +57,7 @@ export function DashboardProvider({
     profile: initialProfile,
     links: initialLinks,
   });
+  const [slug, setSlugState] = useState(initialSlug || "");
   const [savedAt, setSavedAt] = useState<Date | null>(null);
   const [saving, setSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState<
@@ -68,6 +71,10 @@ export function DashboardProvider({
 
   const setLinks = useCallback((links: ProfileLink[]) => {
     setState((prev) => ({ ...prev, links }));
+  }, []);
+
+  const setSlug = useCallback((value: string) => {
+    setSlugState(slugify(value));
   }, []);
 
   const uploadImage = useCallback(
@@ -130,15 +137,27 @@ export function DashboardProvider({
     const supabase = createClient();
 
     try {
+      const nextSlug = slugify(slug);
+      const slugValidationError = validateSlugInput(nextSlug);
+      if (slugValidationError) throw new Error(slugValidationError);
+
       const { error: profileError } = await supabase
         .from("dotra_profiles")
         .update({
           display_name: state.profile.name,
           tagline: state.profile.tagline,
+          slug: nextSlug,
         })
         .eq("id", profileId);
 
-      if (profileError) throw profileError;
+      if (profileError) {
+        if (profileError.code === "23505") {
+          throw new Error("Tento slug už někdo používá.");
+        }
+        throw profileError;
+      }
+
+      setSlugState(nextSlug);
 
       await supabase.from("dotra_links").delete().eq("profile_id", profileId);
 
@@ -165,13 +184,14 @@ export function DashboardProvider({
     } finally {
       setSaving(false);
     }
-  }, [profileId, state.links, state.profile.name, state.profile.tagline]);
+  }, [profileId, slug, state.links, state.profile.name, state.profile.tagline]);
 
   const value = useMemo(
     () => ({
       state,
       profileId,
       slug,
+      setSlug,
       setProfile,
       setLinks,
       uploadImage,
@@ -185,6 +205,7 @@ export function DashboardProvider({
       state,
       profileId,
       slug,
+      setSlug,
       setProfile,
       setLinks,
       uploadImage,

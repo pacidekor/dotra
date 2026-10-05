@@ -16,7 +16,7 @@ Hotovo (stručně)
 Priorita produkt (doporučené pořadí)
 ------------------------------------
 
-1) Edit slug v dashboardu
+1) Edit slug v dashboardu — HOTOTO
    - změna /jmeno po onboardingu
    - kontrola uniqueness + rezervované slugy
    - zobrazení aktuální veřejné URL

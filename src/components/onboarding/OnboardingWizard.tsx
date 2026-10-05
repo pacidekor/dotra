@@ -26,6 +26,7 @@ import {
   linksFromRows,
   profileFromRow,
   slugify,
+  validateSlugInput,
   type DotraLinkRow,
   type DotraProfileRow,
 } from "@/lib/dotra-profile";
@@ -225,24 +226,8 @@ export function OnboardingWizard({
       if (step === 2) {
         const nextSlug = slugify(slug || displayName);
         if (!displayName.trim()) throw new Error("Zadejte jméno profilu.");
-        if (!nextSlug) throw new Error("Zadejte platný slug URL.");
-        const reserved = [
-          "dashboard",
-          "login",
-          "register",
-          "forgot-password",
-          "reset-password",
-          "onboarding",
-          "auth",
-          "tomas",
-          "filip",
-          "rezit",
-          "ukaplicky",
-          "api",
-        ];
-        if (reserved.includes(nextSlug)) {
-          throw new Error("Tento slug je rezervovaný, zvolte jiný.");
-        }
+        const slugValidationError = validateSlugInput(nextSlug);
+        if (slugValidationError) throw new Error(slugValidationError);
         setSlug(nextSlug);
         const { error: slugError } = await supabase
           .from("dotra_profiles")

@@ -4,6 +4,7 @@ import { ProfilePage } from "@/components/ProfilePage";
 import {
   linksFromRows,
   profileFromRow,
+  RESERVED_SLUGS,
   type DotraLinkRow,
   type DotraProfileRow,
 } from "@/lib/dotra-profile";
@@ -13,20 +14,7 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const RESERVED = new Set([
-  "dashboard",
-  "login",
-  "register",
-  "forgot-password",
-  "reset-password",
-  "onboarding",
-  "auth",
-  "tomas",
-  "filip",
-  "rezit",
-  "ukaplicky",
-  "api",
-]);
+const RESERVED = new Set<string>(RESERVED_SLUGS);
 
 export async function generateMetadata({
   params,

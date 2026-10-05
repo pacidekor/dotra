@@ -5,17 +5,23 @@ import type { Profile } from "@/data/types";
 
 type ProfileEditorProps = {
   profile: Profile;
+  slug: string;
   onChange: (profile: Profile) => void;
+  onSlugChange: (slug: string) => void;
   onUploadImage: (kind: "avatar" | "banner", file: File) => void;
   uploadingImage?: "avatar" | "banner" | null;
 };
 
 export function ProfileEditor({
   profile,
+  slug,
   onChange,
+  onSlugChange,
   onUploadImage,
   uploadingImage = null,
 }: ProfileEditorProps) {
+  const publicPath = slug ? `/${slug}` : "/…";
+
   return (
     <section className="space-y-4">
       <div className="space-y-4 rounded-2xl border border-border bg-surface p-3.5 sm:p-4">
@@ -32,6 +38,30 @@ export function ProfileEditor({
         </label>
 
         <label className="block space-y-1.5">
+          <span className="text-sm font-medium text-foreground">
+            Veřejná URL
+          </span>
+          <div className="flex items-center gap-0 overflow-hidden rounded-xl border border-border bg-card focus-within:border-foreground/30">
+            <span className="shrink-0 border-r border-border bg-surface px-3 py-3 text-sm text-muted sm:py-2.5">
+              /
+            </span>
+            <input
+              type="text"
+              value={slug}
+              onChange={(event) => onSlugChange(event.target.value)}
+              className="w-full cursor-text bg-transparent px-3.5 py-3 text-sm text-foreground outline-none sm:py-2.5"
+              placeholder="vas-slug"
+              spellCheck={false}
+              autoComplete="off"
+            />
+          </div>
+          <p className="text-xs text-muted">
+            Profil bude na{" "}
+            <span className="font-medium text-foreground">{publicPath}</span>
+          </p>
+        </label>
+
+        <label className="block space-y-1.5">
           <span className="text-sm font-medium text-foreground">Popis</span>
           <textarea
             value={profile.tagline}
@@ -43,7 +73,6 @@ export function ProfileEditor({
           />
         </label>
 
-        {/* Stejná výška: banner + čtvercová profilovka na jedné úrovni */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-stretch">
           <label className="flex min-w-0 flex-col gap-1.5">
             <span className="text-sm font-medium text-foreground">Banner</span>
