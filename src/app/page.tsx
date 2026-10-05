@@ -73,19 +73,31 @@ export default function Home() {
 
             <div className="mt-10 grid grid-cols-3 gap-3 sm:mt-14 sm:gap-5">
               {[
-                "Kontakt, který nezapadne.",
-                "Váš podnik. Na jednom místě.",
-                "Malý dotek. Hotovo.",
-              ].map((title) => (
+                {
+                  title: "Kontakt, který nezapadne.",
+                  subtitle: "Sdílejte kontakt, web i sociální sítě.",
+                },
+                {
+                  title: "Váš podnik. Na jednom místě.",
+                  subtitle: "Menu, sociální sítě i kontakt.",
+                },
+                {
+                  title: "Malý dotek. Hotovo.",
+                  subtitle: "Usnadněte přístup k Wi-Fi i recenzím.",
+                },
+              ].map((item) => (
                 <div
-                  key={title}
+                  key={item.title}
                   className="flex aspect-[4/5] flex-col rounded-[1.5rem] bg-[#f5f5f7] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8"
                 >
                   <h3
                     className={`${headline} whitespace-nowrap text-[clamp(0.95rem,1.9vw,1.65rem)] leading-tight font-semibold tracking-[-0.03em]`}
                   >
-                    {title}
+                    {item.title}
                   </h3>
+                  <p className="mt-2 text-[13px] leading-relaxed text-foreground/50 sm:mt-3 sm:text-[15px]">
+                    {item.subtitle}
+                  </p>
                 </div>
               ))}
             </div>
