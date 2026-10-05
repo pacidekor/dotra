@@ -86,6 +86,7 @@ export default function Home() {
                 {
                   title: "Malý dotek. Hotovo.",
                   subtitle: "Usnadněte přístup k Wi-Fi i recenzím.",
+                  image: "/images/img3.webp",
                 },
               ].map((item) => (
                 <div
