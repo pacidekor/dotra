@@ -82,7 +82,7 @@ export default function Home() {
                   className="flex aspect-[4/5] flex-col rounded-[1.5rem] bg-[#f5f5f7] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8"
                 >
                   <h3
-                    className={`${headline} text-[clamp(1.15rem,2.4vw,2rem)] leading-[1.15] font-semibold tracking-[-0.03em]`}
+                    className={`${headline} whitespace-nowrap text-[clamp(0.7rem,1.55vw,1.35rem)] leading-tight font-semibold tracking-[-0.03em]`}
                   >
                     {title}
                   </h3>
