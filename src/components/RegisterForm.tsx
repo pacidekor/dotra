@@ -51,24 +51,15 @@ export function RegisterForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-8">
-      <div className="space-y-6">
-        <Link
-          href="/"
-          className={`${chillax.className} text-[1.85rem] leading-none font-semibold tracking-[-0.04em] text-foreground lowercase sm:text-[2.1rem]`}
+      <div className="space-y-2">
+        <h1
+          className={`${chillax.className} text-[clamp(1.85rem,4vw,2.35rem)] leading-[1.05] font-bold tracking-[-0.035em]`}
         >
-          dotra.
-        </Link>
-
-        <div className="space-y-2">
-          <h1
-            className={`${chillax.className} text-[clamp(1.85rem,4vw,2.35rem)] leading-[1.05] font-bold tracking-[-0.035em]`}
-          >
-            Vytvořte účet
-          </h1>
-          <p className="text-[15px] leading-relaxed text-foreground/55">
-            Založte si dotru a nastavte digitální profil během pár minut.
-          </p>
-        </div>
+          Vytvořte účet
+        </h1>
+        <p className="text-[15px] leading-relaxed text-foreground/55">
+          Založte si dotru a nastavte digitální profil během pár minut.
+        </p>
       </div>
 
       <div className="space-y-3.5">
