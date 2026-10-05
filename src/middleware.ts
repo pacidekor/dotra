@@ -9,6 +9,8 @@ export const config = {
   matcher: [
     "/login",
     "/register",
+    "/forgot-password",
+    "/reset-password",
     "/onboarding",
     "/onboarding/:path*",
     "/dashboard",
