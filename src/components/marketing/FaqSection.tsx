@@ -48,12 +48,17 @@ export function FaqSection() {
             </p>
           </div>
 
-          <div className="border-t border-black/[0.08]">
+          <div>
             {faqs.map((item, index) => {
               const isOpen = open === index;
 
               return (
-                <div key={item.q} className="border-b border-black/[0.08]">
+                <div
+                  key={item.q}
+                  className={
+                    index > 0 ? "border-t border-black/[0.08]" : undefined
+                  }
+                >
                   <button
                     type="button"
                     aria-expanded={isOpen}
@@ -65,13 +70,27 @@ export function FaqSection() {
                     </span>
                     <span
                       aria-hidden="true"
-                      className={`inline-flex size-8 shrink-0 items-center justify-center rounded-full text-xl leading-none transition-colors sm:size-9 sm:text-2xl ${
-                        isOpen
-                          ? "bg-[#ccfc4e] font-medium text-black"
-                          : "bg-transparent font-light text-foreground"
+                      className={`inline-flex size-8 shrink-0 items-center justify-center rounded-full transition-colors sm:size-9 ${
+                        isOpen ? "bg-[#ccfc4e] text-black" : "bg-transparent text-foreground"
                       }`}
                     >
-                      {isOpen ? "−" : "+"}
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        className="size-4 sm:size-[1.125rem]"
+                      >
+                        {isOpen ? (
+                          <line x1="6" y1="12" x2="18" y2="12" />
+                        ) : (
+                          <>
+                            <line x1="12" y1="6" x2="12" y2="18" />
+                            <line x1="6" y1="12" x2="18" y2="12" />
+                          </>
+                        )}
+                      </svg>
                     </span>
                   </button>
 
