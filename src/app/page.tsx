@@ -94,7 +94,7 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className={`group relative flex aspect-[4/5] flex-col overflow-hidden rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8 ${
+                  className={`group relative flex aspect-[4/5] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8 ${
                     item.image
                       ? "bg-cover bg-center bg-no-repeat"
                       : "bg-[#f5f5f7]"
@@ -114,23 +114,30 @@ export default function Home() {
                     {item.subtitle}
                   </p>
                   <div className="mt-auto flex justify-end pt-4">
-                    <span className="inline-flex size-10 items-center justify-center rounded-full bg-white transition-colors duration-300 group-hover:bg-[#ccfc4e] sm:size-11 lg:size-12">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="size-[1.1rem] text-black transition-transform duration-300 ease-out group-hover:-rotate-45 sm:size-5 lg:size-6"
-                        aria-hidden="true"
-                      >
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                      </svg>
+                    <span className="inline-flex h-10 items-center overflow-hidden rounded-full bg-white transition-colors duration-300 ease-out group-hover:bg-[#ccfc4e] sm:h-11 lg:h-12">
+                      <span className="inline-flex max-w-0 items-center overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:max-w-[7.5rem] group-hover:opacity-100 group-hover:pl-4">
+                        <span className="whitespace-nowrap text-[13px] font-medium text-black sm:text-sm">
+                          Zjistit více
+                        </span>
+                      </span>
+                      <span className="inline-flex size-10 shrink-0 items-center justify-center sm:size-11 lg:size-12">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="size-[1.1rem] text-black transition-transform duration-300 ease-out group-hover:-rotate-45 sm:size-5 lg:size-6"
+                          aria-hidden="true"
+                        >
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                      </span>
                     </span>
                   </div>
                 </div>
