@@ -395,7 +395,7 @@ export function ProductFormsSection() {
               transform,
             }}
           >
-            <div className="rounded-[1.35rem] border border-black/[0.06] bg-white/90 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] backdrop-blur-xl sm:p-5">
+            <div className="rounded-[1.35rem] border border-black/[0.06] bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] sm:p-5">
               <p className="text-[11px] font-medium tracking-[0.16em] text-foreground/40 uppercase">
                 {info.eyebrow}
               </p>
