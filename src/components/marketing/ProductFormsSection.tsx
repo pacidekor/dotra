@@ -218,13 +218,13 @@ export function ProductFormsSection() {
         />
       ))}
 
-      <div className="pointer-events-none absolute top-[6%] left-[4%] z-[5] max-w-xl">
+      <div className="pointer-events-none absolute top-[6%] left-[4%] z-[5]">
         <h2
           className={`${chillax.className} whitespace-nowrap text-left text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em] text-foreground`}
         >
           Různé podoby. Jedna dotra.
         </h2>
-        <p className="mt-3 text-left text-base leading-relaxed text-foreground/50 sm:mt-4 sm:text-lg">
+        <p className="mt-3 whitespace-nowrap text-left text-base leading-relaxed text-foreground/50 sm:mt-4 sm:text-lg">
           Karty, kolečka i stojánky. Vyberte si podobu, která sedne vašemu
           podnikání.
         </p>
