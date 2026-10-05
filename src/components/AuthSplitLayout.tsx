@@ -11,8 +11,8 @@ type AuthSplitLayoutProps = {
 
 export function AuthSplitLayout({
   children,
-  imageSrc = "/images/dotraheroilustracefixed.webp",
-  imageAlt = "dotra NFC karty a digitální profil",
+  imageSrc = "/images/img2.webp",
+  imageAlt = "dotra — váš podnik na jednom místě",
 }: AuthSplitLayoutProps) {
   return (
     <main className="min-h-dvh bg-white text-foreground lg:grid lg:grid-cols-2">
