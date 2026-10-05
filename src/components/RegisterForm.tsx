@@ -103,7 +103,7 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-xl bg-foreground px-4 py-3.5 text-[15px] font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-70"
+        className="w-full rounded-full bg-[#ccfc4e] px-4 py-3.5 text-[15px] font-medium text-black transition-opacity hover:opacity-85 disabled:opacity-70"
       >
         {loading ? "Vytvářím účet…" : "Registrovat"}
       </button>
