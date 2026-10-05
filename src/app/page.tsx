@@ -88,7 +88,7 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="flex aspect-[4/5] flex-col rounded-[1.5rem] bg-[#f5f5f7] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8"
+                  className="relative flex aspect-[4/5] flex-col rounded-[1.5rem] bg-[#f5f5f7] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8"
                 >
                   <h3
                     className={`${headline} whitespace-nowrap text-[clamp(0.95rem,1.9vw,1.65rem)] leading-tight font-semibold tracking-[-0.03em]`}
@@ -98,6 +98,26 @@ export default function Home() {
                   <p className="mt-2 text-sm leading-relaxed text-foreground/50 sm:mt-3 sm:text-base">
                     {item.subtitle}
                   </p>
+                  <div className="mt-auto flex justify-end pt-4">
+                    <span className="inline-flex size-10 items-center justify-center rounded-full bg-white sm:size-11 lg:size-12">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="size-[1.1rem] text-black sm:size-5 lg:size-6"
+                        aria-hidden="true"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
