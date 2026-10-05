@@ -70,6 +70,15 @@ export default function Home() {
             >
               Co všechno zvládne jedno přiložení.
             </h2>
+
+            <div className="mt-10 grid grid-cols-3 gap-3 sm:mt-14 sm:gap-5">
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="aspect-[4/5] rounded-[1.5rem] bg-[#f5f5f7] sm:rounded-[1.75rem]"
+                />
+              ))}
+            </div>
           </div>
         </section>
 
