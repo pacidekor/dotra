@@ -1,0 +1,81 @@
+dotra — zbývá udělat
+====================
+Stav k 5. 10. 2026
+
+Hotovo (stručně)
+----------------
+- Registrace / login / logout (sidebar)
+- Onboarding (avatar, banner, jméno, slug, popisek, odkazy)
+- Veřejný profil /{slug} z DB
+- Dashboard: jméno, popisek, odkazy (CRUD + DnD), live preview
+- Persist avatar/banner v dashboardu (Supabase Storage)
+- Auth UI (login, register, forgot/reset password) + marketing header CTA
+- Homepage marketing
+
+
+Priorita produkt (doporučené pořadí)
+------------------------------------
+
+1) Edit slug v dashboardu
+   - změna /jmeno po onboardingu
+   - kontrola uniqueness + rezervované slugy
+   - zobrazení aktuální veřejné URL
+
+2) Nastavení účtu (dashboard /nastaveni)
+   - reálná veřejná URL ze slug
+   - reálný e-mail přihlášeného uživatele
+   - odhlášení přes supabase.auth.signOut() (teď jen redirect)
+   - změna hesla (volitelně napojit na existující reset flow)
+
+3) Wi-Fi pro běžné DB profily
+   - teď funguje hlavně u dema /ukaplicky
+   - nastavení v dashboardu + zobrazení na veřejném profilu
+
+4) Reálná analytika
+   - dashboard stats jsou mock
+   - tracking návštěv profilu + kliků na odkazy
+   - napojení StatsPanel na reálná data
+
+5) Confirm email UX (pokud bude zapnuté v Supabase)
+   - hlášky po registraci
+   - stránka / ověření stavu
+
+
+Menší / volitelné doplňky
+-------------------------
+- toggle zapnutí/vypnutí jednotlivých odkazů
+- více typů kontaktů / polí
+- OAuth (Google apod.)
+- forgot-password e-mail šablona (branding dotra)
+- mobilní ladění auth / dashboard
+- smazání účtu
+
+
+Na konec (infra / Supabase konfigurace)
+---------------------------------------
+Není teď priorita — stačí před ostrým provozem:
+
+A) Redirect URLs pro reset hesla
+   Supabase → Authentication → URL Configuration → Redirect URLs
+   přidat:
+   - http://localhost:3000/auth/callback
+   - https://<produkční-domena>/auth/callback
+   (Site URL nastavit na produkční doménu)
+
+B) Ověřit storage buckety
+   - public buckety: avatars, banners
+   - RLS / policies pro upload přihlášeného uživatele
+
+C) Env na Vercel
+   - NEXT_PUBLIC_SUPABASE_URL
+   - NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+   (.env.local je teď v gitu kvůli Codespaces — později ideálně vrátit do ignore)
+
+D) Auth e-mail šablony
+   - Confirm signup / Reset password — texty a branding dotra
+
+
+Poznámky
+--------
+- Flow hesla: /forgot-password → e-mail → /auth/callback → /reset-password
+- Hardcoded dema (/filip, /tomas, /rezit, /ukaplicky) nejsou součást user produktu
