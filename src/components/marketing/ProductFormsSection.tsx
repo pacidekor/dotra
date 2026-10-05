@@ -219,9 +219,9 @@ export function ProductFormsSection() {
       ))}
 
       <h2
-        className={`${chillax.className} pointer-events-none absolute top-[6%] left-[4%] z-[5] max-w-5xl text-left text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em] text-foreground`}
+        className={`${chillax.className} pointer-events-none absolute top-[6%] left-[4%] z-[5] whitespace-nowrap text-left text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em] text-foreground`}
       >
-        Různé podoby. Jedna Dotra.
+        Různé podoby. Jedna dotra.
       </h2>
 
       {hotspots.map((hotspot) => (
