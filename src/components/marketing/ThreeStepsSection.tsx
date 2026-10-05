@@ -54,7 +54,7 @@ export function ThreeStepsSection() {
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpen(index)}
-                    className="flex w-full items-center gap-4 py-6 text-left sm:gap-6 sm:py-7"
+                    className="flex w-full cursor-pointer items-center gap-4 py-6 text-left sm:gap-6 sm:py-7"
                   >
                     <span
                       className={`inline-flex size-10 shrink-0 items-center justify-center rounded-full text-[15px] font-medium transition-colors sm:size-11 sm:text-base ${
