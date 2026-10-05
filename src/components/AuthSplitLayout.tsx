@@ -26,7 +26,7 @@ export function AuthSplitLayout({
           </Link>
 
           <div className="flex flex-1 flex-col justify-center py-10 sm:py-12">
-            <div className="mx-auto w-full max-w-[380px] lg:mx-0">{children}</div>
+            <div className="mx-auto w-full max-w-[380px]">{children}</div>
           </div>
         </section>
 
