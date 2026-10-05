@@ -130,7 +130,7 @@ type DragMode =
     };
 
 export function ProductFormsSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [hotspots, setHotspots] = useState(initialHotspots);
   const [active, setActive] = useState<HoverId | null>(null);
   const [drag, setDrag] = useState<DragMode | null>(null);
