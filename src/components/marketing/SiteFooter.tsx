@@ -15,10 +15,25 @@ export function SiteFooter() {
           </h2>
           <Link
             href="#cards"
-            className="inline-flex h-12 shrink-0 items-center justify-center gap-2 self-start rounded-full bg-[#ccfc4e] px-7 text-[15px] font-medium text-black transition-opacity hover:opacity-85 sm:h-14 sm:self-auto sm:px-8 sm:text-base"
+            className="inline-flex h-12 shrink-0 items-center justify-center gap-2.5 self-start rounded-full bg-[#ccfc4e] px-7 text-[15px] font-medium text-black transition-opacity hover:opacity-85 sm:h-14 sm:self-auto sm:px-8 sm:text-base"
           >
             Prohlédnout produkty
-            <span aria-hidden="true">↗</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-4 -rotate-45 sm:size-5"
+              aria-hidden="true"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
           </Link>
         </div>
 
