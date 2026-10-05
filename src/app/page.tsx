@@ -95,7 +95,7 @@ export default function Home() {
                   >
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-foreground/50 sm:mt-3 sm:text-[15px]">
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/50 sm:mt-3 sm:text-base">
                     {item.subtitle}
                   </p>
                 </div>
