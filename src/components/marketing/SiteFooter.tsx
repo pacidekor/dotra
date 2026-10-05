@@ -85,8 +85,8 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Giant brand — přesně od levého po pravý okraj */}
-        <div className="w-full pb-4 pt-2 sm:pb-6 sm:pt-4">
+        {/* Giant brand — písmena vyplní šířku obsahového kontejneru */}
+        <div className="w-full overflow-visible py-2 sm:py-4">
           <FitWidthText
             text="dotra."
             className={`${chillax.className} font-bold tracking-[-0.06em] lowercase`}
