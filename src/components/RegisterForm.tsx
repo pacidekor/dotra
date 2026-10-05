@@ -7,7 +7,7 @@ import { chillax } from "@/lib/fonts";
 import { createClient } from "@/utils/supabase/client";
 
 const inputClassName =
-  "w-full rounded-xl border border-[#e5e5e8] bg-white px-3.5 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-foreground/35 focus:border-foreground/30";
+  "w-full cursor-text rounded-xl border border-[#e5e5e8] bg-white px-3.5 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-foreground/35 focus:border-foreground/30";
 
 export function RegisterForm() {
   const router = useRouter();
