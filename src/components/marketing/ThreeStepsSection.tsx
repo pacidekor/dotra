@@ -84,7 +84,9 @@ export function ThreeStepsSection() {
                     <div className="overflow-hidden">
                       <div className="flex gap-4 pb-6 sm:gap-5 sm:pb-7">
                         <div className="flex w-9 shrink-0 justify-center sm:w-10">
-                          <span className="w-px bg-[#ccfc4e]" />
+                          {index < steps.length - 1 ? (
+                            <span className="w-px bg-[#ccfc4e]" />
+                          ) : null}
                         </div>
                         <div className="min-w-0 pb-1">
                           <p className="max-w-md text-[15px] leading-relaxed text-foreground/50 sm:text-base">
@@ -106,7 +108,7 @@ export function ThreeStepsSection() {
             })}
           </div>
 
-          <div className="overflow-hidden rounded-[1.5rem] sm:rounded-[1.75rem]">
+          <div className="w-full max-w-[520px] justify-self-center overflow-hidden rounded-[1.5rem] sm:rounded-[1.75rem] lg:max-w-[85%] lg:justify-self-end">
             <ImagePlaceholder
               label="Dotra ve třech krocích"
               aspect="aspect-square"
