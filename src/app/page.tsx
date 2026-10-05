@@ -72,11 +72,21 @@ export default function Home() {
             </h2>
 
             <div className="mt-10 grid grid-cols-3 gap-3 sm:mt-14 sm:gap-5">
-              {[0, 1, 2].map((i) => (
+              {[
+                "Kontakt, který nezapadne",
+                "Váš podnik. Na jednom místě.",
+                "Malý dotek. Hotovo.",
+              ].map((title) => (
                 <div
-                  key={i}
-                  className="aspect-[4/5] rounded-[1.5rem] bg-[#f5f5f7] sm:rounded-[1.75rem]"
-                />
+                  key={title}
+                  className="flex aspect-[4/5] flex-col rounded-[1.5rem] bg-[#f5f5f7] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8"
+                >
+                  <h3
+                    className={`${headline} text-[clamp(1.15rem,2.4vw,2rem)] leading-[1.15] font-semibold tracking-[-0.03em]`}
+                  >
+                    {title}
+                  </h3>
+                </div>
               ))}
             </div>
           </div>
