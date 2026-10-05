@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
@@ -44,15 +43,11 @@ export function LoginForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-8">
       <div className="space-y-6">
-        <Link href="/" className="inline-flex">
-          <Image
-            src="/images/logodotra.webp"
-            alt="dotra"
-            width={160}
-            height={56}
-            priority
-            className="h-10 w-auto object-contain sm:h-11"
-          />
+        <Link
+          href="/"
+          className={`${chillax.className} text-[1.85rem] leading-none font-semibold tracking-[-0.04em] text-foreground lowercase sm:text-[2.1rem]`}
+        >
+          dotra.
         </Link>
 
         <div className="space-y-2">
