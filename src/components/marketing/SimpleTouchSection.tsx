@@ -4,11 +4,11 @@ import { chillax } from "@/lib/fonts";
 
 export function SimpleTouchSection() {
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-white py-12 sm:py-24">
       <div className="mx-auto w-[92%] max-w-[1700px]">
         <div className="max-w-3xl">
           <h2
-            className={`${chillax.className} whitespace-nowrap text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
+            className={`${chillax.className} text-[clamp(1.85rem,7vw,5.5rem)] leading-[1.05] font-bold tracking-[-0.035em] sm:whitespace-nowrap sm:leading-[1.02]`}
           >
             Takhle jednoduché to je.
           </h2>
@@ -17,16 +17,16 @@ export function SimpleTouchSection() {
           </p>
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-[1.75rem] sm:mt-12 sm:rounded-[2rem]">
+        <div className="relative mt-8 overflow-hidden rounded-[1.5rem] sm:mt-12 sm:rounded-[2rem]">
           <ImagePlaceholder
             label="dotra v praxi — foto"
-            aspect="aspect-[16/10] sm:aspect-[21/10]"
+            aspect="aspect-[4/3] sm:aspect-[16/10] lg:aspect-[21/10]"
             className="rounded-none"
           />
 
           <button
             type="button"
-            className="absolute bottom-4 left-4 inline-flex items-center gap-2.5 rounded-full bg-white/95 px-4 py-2.5 text-sm font-medium text-foreground shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-opacity hover:opacity-90 sm:bottom-6 sm:left-6 sm:px-5 sm:py-3 sm:text-[15px]"
+            className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-white/95 px-3.5 py-2 text-sm font-medium text-foreground shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm transition-opacity hover:opacity-90 sm:bottom-6 sm:left-6 sm:gap-2.5 sm:px-5 sm:py-3 sm:text-[15px]"
           >
             <span className="inline-flex size-5 items-center justify-center sm:size-6">
               <svg
@@ -42,7 +42,7 @@ export function SimpleTouchSection() {
           </button>
         </div>
 
-        <div className="mt-8 flex flex-col gap-6 sm:mt-10 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex flex-col gap-5 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           <p className="max-w-md text-sm leading-relaxed text-foreground/45 sm:text-[15px]">
             Váš brand, váš styl. Každá dotra je unikátní.
           </p>

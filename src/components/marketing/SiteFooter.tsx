@@ -7,15 +7,15 @@ export function SiteFooter() {
     <footer className="bg-[#f5f5f7] text-foreground">
       <div className="mx-auto w-[92%] max-w-[1700px]">
         {/* CTA */}
-        <div className="flex flex-col gap-6 border-b border-black/[0.08] py-12 sm:flex-row sm:items-center sm:justify-between sm:py-14">
+        <div className="flex flex-col gap-5 border-b border-black/[0.08] py-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-14">
           <h2
-            className={`${chillax.className} text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
+            className={`${chillax.className} text-[clamp(1.75rem,6vw,3.75rem)] leading-[1.05] font-bold tracking-[-0.035em]`}
           >
             Najděte svou dotru.
           </h2>
           <Link
             href="#cards"
-            className="inline-flex h-12 shrink-0 items-center justify-center gap-2.5 self-start rounded-full bg-[#ccfc4e] px-7 text-[15px] font-medium text-black transition-opacity hover:opacity-85 sm:h-14 sm:self-auto sm:px-8 sm:text-base"
+            className="inline-flex h-12 shrink-0 items-center justify-center gap-2.5 self-start rounded-full bg-[#ccfc4e] px-6 text-[15px] font-medium text-black transition-opacity hover:opacity-85 sm:h-14 sm:self-auto sm:px-8 sm:text-base"
           >
             Prohlédnout produkty
             <svg
@@ -38,9 +38,9 @@ export function SiteFooter() {
         </div>
 
         {/* Columns */}
-        <div className="grid gap-10 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-[1.4fr_1fr_1fr_0.6fr] lg:gap-8">
+        <div className="grid gap-8 py-10 sm:grid-cols-2 sm:gap-10 sm:py-14 lg:grid-cols-[1.4fr_1fr_1fr_0.6fr] lg:gap-8">
           <p
-            className={`${chillax.className} max-w-xs text-2xl leading-tight font-semibold tracking-[-0.03em] sm:text-3xl`}
+            className={`${chillax.className} max-w-xs text-xl leading-tight font-semibold tracking-[-0.03em] sm:text-3xl`}
           >
             Malé přiložení.
             <br />

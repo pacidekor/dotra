@@ -18,19 +18,19 @@ export default function Home() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden bg-white pt-[4.5rem] sm:pt-[5.25rem]">
-          <div className="mx-auto w-[92%] max-w-[1700px] pt-8 pb-5 text-center sm:pt-10 sm:pb-6 lg:pt-12">
+          <div className="mx-auto w-[92%] max-w-[1700px] pt-6 pb-4 text-center sm:pt-10 sm:pb-6 lg:pt-12">
             <h1
-              className={`${headline} animate-reveal-title mx-auto flex w-full max-w-5xl flex-col items-center gap-1 text-[clamp(3.1rem,8vw,7rem)] leading-[0.98] font-bold tracking-[-0.035em] uppercase sm:gap-2`}
+              className={`${headline} animate-reveal-title mx-auto flex w-full max-w-5xl flex-col items-center gap-1 text-[clamp(2.35rem,9vw,7rem)] leading-[0.98] font-bold tracking-[-0.035em] uppercase sm:gap-2`}
             >
               <span>Jedno přiložení.</span>
-              <span className="whitespace-nowrap">Spousta možností.</span>
+              <span className="sm:whitespace-nowrap">Spousta možností.</span>
             </h1>
-            <p className="animate-reveal-subtitle mx-auto mt-4 text-[17px] leading-relaxed text-foreground/55 sm:mt-5 sm:text-xl">
+            <p className="animate-reveal-subtitle mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/55 sm:mt-5 sm:text-[17px] sm:text-xl">
               Menu, osobní profil, kontakty, Wi-Fi i recenze. Vše, co chcete
               sdílet. Na jedno přiložení telefonu.
             </p>
             <div
-              className="animate-reveal-fade mt-5 flex flex-col items-center justify-center gap-3 sm:mt-6 sm:flex-row"
+              className="animate-reveal-fade mt-5 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-6 sm:w-auto sm:flex-row sm:items-center"
               style={{ animationDelay: "200ms" }}
             >
               <Link
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
 
           <div
-            className="animate-reveal-banner mx-auto w-[min(92%,1100px)] sm:w-[min(92%,1280px)]"
+            className="animate-reveal-banner mx-auto w-[min(96%,1100px)] sm:w-[min(92%,1280px)]"
             style={{ animationDelay: "80ms" }}
           >
             <Image
@@ -59,22 +59,22 @@ export default function Home() {
               height={900}
               priority
               className="h-auto w-full object-contain"
-              sizes="(max-width: 1280px) 92vw, 1280px"
+              sizes="(max-width: 1280px) 96vw, 1280px"
             />
           </div>
-          <div className="h-10 bg-white sm:h-14" />
+          <div className="h-8 bg-white sm:h-14" />
         </section>
 
         {/* Co všechno zvládne */}
-        <section className="bg-white py-16 sm:py-24">
+        <section className="bg-white py-12 sm:py-24">
           <div className="mx-auto w-[92%] max-w-[1700px]">
             <h2
-              className={`${headline} max-w-5xl text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
+              className={`${headline} max-w-5xl text-[clamp(1.85rem,7vw,5.5rem)] leading-[1.05] font-bold tracking-[-0.035em]`}
             >
               Co všechno zvládne jedno přiložení.
             </h2>
 
-            <div className="mt-10 grid grid-cols-3 gap-3 sm:mt-14 sm:gap-5">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-3 sm:gap-5">
               {[
                 {
                   title: "Kontakt, který nezapadne.",
@@ -94,23 +94,15 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className={`group relative flex aspect-[4/5] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-7 lg:p-8 ${
-                    item.image
-                      ? "bg-cover bg-center bg-no-repeat"
-                      : "bg-[#f5f5f7]"
-                  }`}
-                  style={
-                    item.image
-                      ? { backgroundImage: `url(${item.image})` }
-                      : undefined
-                  }
+                  className={`group relative flex min-h-[22rem] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] bg-cover bg-center bg-no-repeat p-5 sm:aspect-[4/5] sm:min-h-0 sm:rounded-[1.75rem] sm:p-7 lg:p-8`}
+                  style={{ backgroundImage: `url(${item.image})` }}
                 >
                   <h3
-                    className={`${headline} whitespace-nowrap text-[clamp(0.95rem,1.9vw,1.65rem)] leading-tight font-semibold tracking-[-0.03em]`}
+                    className={`${headline} text-[clamp(1.35rem,4vw,1.65rem)] leading-tight font-semibold tracking-[-0.03em] sm:whitespace-nowrap sm:text-[clamp(0.95rem,1.9vw,1.65rem)]`}
                   >
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground/50 sm:mt-3 sm:text-base">
+                  <p className="mt-2 max-w-sm text-sm leading-relaxed text-foreground/50 sm:mt-3 sm:text-base">
                     {item.subtitle}
                   </p>
                   <div className="mt-auto flex justify-end pt-4">

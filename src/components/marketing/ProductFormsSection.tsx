@@ -222,12 +222,111 @@ export function ProductFormsSection() {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="cards"
-      className="relative w-full scroll-mt-24 overflow-visible"
-      style={{ aspectRatio: `${IMAGE_W} / ${IMAGE_H}` }}
-    >
+    <section id="cards" className="scroll-mt-24 bg-white">
+      {/* Mobile */}
+      <div className="mx-auto w-[92%] max-w-[1700px] py-12 md:hidden">
+        <h2
+          className={`${chillax.className} text-[clamp(1.85rem,7vw,3rem)] leading-[1.05] font-bold tracking-[-0.035em]`}
+        >
+          Různé podoby.
+          <br />
+          Jedna dotra.
+        </h2>
+        <p className="mt-3 text-base leading-relaxed text-foreground/50">
+          Karty, kolečka i stojánky. Vyberte si podobu, která sedne vašemu
+          podnikání.
+        </p>
+
+        <div className="mt-8 space-y-4">
+          {hoverLayers.map((layer) => {
+            const info = productInfo[layer.id];
+            const isOpen = active === layer.id;
+
+            return (
+              <button
+                key={layer.id}
+                type="button"
+                onClick={() => setActive(isOpen ? null : layer.id)}
+                className="w-full cursor-pointer overflow-hidden rounded-[1.5rem] border border-black/[0.06] bg-white text-left"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={layer.src}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </div>
+                <div className="p-5">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[11px] font-medium tracking-[0.16em] text-foreground/40 uppercase">
+                        {info.eyebrow}
+                      </p>
+                      <h3
+                        className={`${chillax.className} mt-1.5 text-xl font-bold tracking-[-0.03em]`}
+                      >
+                        {info.title}
+                      </h3>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      className={`inline-flex size-8 shrink-0 items-center justify-center rounded-full transition-colors ${
+                        isOpen ? "bg-[#ccfc4e]" : "bg-[#f0f0f2]"
+                      }`}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        className="size-4"
+                      >
+                        {isOpen ? (
+                          <line x1="6" y1="12" x2="18" y2="12" />
+                        ) : (
+                          <>
+                            <line x1="12" y1="6" x2="12" y2="18" />
+                            <line x1="6" y1="12" x2="18" y2="12" />
+                          </>
+                        )}
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="mt-3 text-[14px] leading-relaxed text-foreground/55">
+                        {info.text}
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-1.5 pb-1">
+                        {info.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full bg-[#f0f0f2] px-2.5 py-1 text-[11px] font-medium text-foreground/70"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Desktop interactive scene */}
+      <div
+        ref={sectionRef}
+        className="relative hidden w-full overflow-visible md:block"
+        style={{ aspectRatio: `${IMAGE_W} / ${IMAGE_H}` }}
+      >
       {/* Originální WebP bez Next optimalizace — jinak se fotky rozmažou */}
       <img
         src={baseImage}
@@ -440,6 +539,7 @@ export function ProductFormsSection() {
           </button>
         </div>
       ) : null}
+      </div>
     </section>
   );
 }

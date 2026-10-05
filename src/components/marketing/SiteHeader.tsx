@@ -28,7 +28,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-[4.5rem] w-[92%] max-w-[1700px] items-center justify-between sm:h-[5.25rem]">
         <Link
           href="/"
-          className={`${chillax.className} text-[2rem] leading-none font-semibold tracking-[-0.04em] text-foreground lowercase sm:text-[2.35rem]`}
+          className={`${chillax.className} text-[1.75rem] leading-none font-semibold tracking-[-0.04em] text-foreground lowercase sm:text-[2.35rem]`}
         >
           dotra.
         </Link>
@@ -53,7 +53,7 @@ export function SiteHeader() {
 
         <Link
           href="/register"
-          className="rounded-full bg-[#ccfc4e] px-6 py-3 text-[15px] font-medium text-black transition-opacity hover:opacity-85 sm:px-7 sm:py-3.5 sm:text-base"
+          className="rounded-full bg-[#ccfc4e] px-4 py-2.5 text-sm font-medium text-black transition-opacity hover:opacity-85 sm:px-7 sm:py-3.5 sm:text-base"
         >
           Pořídit dotru.
         </Link>
