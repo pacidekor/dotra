@@ -43,7 +43,7 @@ export function ThreeStepsSection() {
           </p>
         </div>
 
-        <div className="mt-12 grid items-start gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+        <div className="mt-12 grid items-start gap-10 lg:mt-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-14 xl:gap-16">
           <div className="border-t border-black/[0.08]">
             {steps.map((step, index) => {
               const isOpen = open === index;
@@ -54,10 +54,10 @@ export function ThreeStepsSection() {
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpen(index)}
-                    className="flex w-full items-center gap-4 py-5 text-left sm:gap-5 sm:py-6"
+                    className="flex w-full items-center gap-4 py-6 text-left sm:gap-6 sm:py-7"
                   >
                     <span
-                      className={`inline-flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-medium transition-colors sm:size-10 sm:text-[15px] ${
+                      className={`inline-flex size-10 shrink-0 items-center justify-center rounded-full text-[15px] font-medium transition-colors sm:size-11 sm:text-base ${
                         isOpen
                           ? "bg-[#ccfc4e] text-black"
                           : "bg-transparent text-foreground/35"
@@ -65,12 +65,12 @@ export function ThreeStepsSection() {
                     >
                       {step.n}
                     </span>
-                    <span className="min-w-0 flex-1 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                    <span className="min-w-0 flex-1 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                       {step.title}
                     </span>
                     <span
                       aria-hidden="true"
-                      className="shrink-0 text-2xl leading-none font-light text-foreground/40"
+                      className="shrink-0 text-2xl leading-none font-light text-foreground/40 sm:text-3xl"
                     >
                       {isOpen ? "−" : "+"}
                     </span>
@@ -82,19 +82,19 @@ export function ThreeStepsSection() {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <div className="flex gap-4 pb-6 sm:gap-5 sm:pb-7">
-                        <div className="flex w-9 shrink-0 justify-center sm:w-10">
+                      <div className="flex gap-4 pb-7 sm:gap-6 sm:pb-8">
+                        <div className="flex w-10 shrink-0 justify-center sm:w-11">
                           {index < steps.length - 1 ? (
                             <span className="w-px bg-[#ccfc4e]" />
                           ) : null}
                         </div>
                         <div className="min-w-0 pb-1">
-                          <p className="max-w-md text-[15px] leading-relaxed text-foreground/50 sm:text-base">
+                          <p className="max-w-xl text-base leading-relaxed text-foreground/50 sm:text-lg">
                             {step.text}
                           </p>
                           <Link
                             href={step.cta.href}
-                            className="mt-4 inline-flex items-center gap-1.5 border-b border-foreground/80 pb-0.5 text-[15px] font-medium text-foreground transition-opacity hover:opacity-70"
+                            className="mt-5 inline-flex items-center gap-1.5 border-b border-foreground/80 pb-0.5 text-base font-medium text-foreground transition-opacity hover:opacity-70"
                           >
                             {step.cta.label}
                             <span aria-hidden="true">↗</span>
