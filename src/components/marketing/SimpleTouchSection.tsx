@@ -51,8 +51,8 @@ export function SimpleTouchSection() {
             href="/register"
             className="group inline-flex items-center gap-3 self-start text-[15px] font-medium text-foreground sm:self-auto sm:text-base"
           >
-            Objevte svou Dotru
-            <span className="inline-flex size-10 items-center justify-center rounded-full bg-[#ccfc4e] transition-transform group-hover:translate-x-0.5 sm:size-11">
+            Objevte svou dotru
+            <span className="inline-flex size-10 items-center justify-center rounded-full bg-[#ccfc4e] sm:size-11">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -63,7 +63,7 @@ export function SimpleTouchSection() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="size-4 text-black sm:size-5"
+                className="size-4 text-black transition-transform duration-300 ease-out group-hover:-rotate-45 sm:size-5"
                 aria-hidden="true"
               >
                 <line x1="5" y1="12" x2="19" y2="12" />
