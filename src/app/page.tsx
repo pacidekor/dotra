@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaqSection } from "@/components/marketing/FaqSection";
 import { ImagePlaceholder } from "@/components/marketing/ImagePlaceholder";
 import { ProductFormsSection } from "@/components/marketing/ProductFormsSection";
 import { SimpleTouchSection } from "@/components/marketing/SimpleTouchSection";
@@ -145,6 +146,8 @@ export default function Home() {
         <ThreeStepsSection />
 
         <SimpleTouchSection />
+
+        <FaqSection />
 
         {/* Jak to funguje */}
         <section
