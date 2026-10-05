@@ -81,6 +81,7 @@ export default function Home() {
                 {
                   title: "Váš podnik. Na jednom místě.",
                   subtitle: "Menu, sociální sítě i kontakt.",
+                  image: "/images/img2.webp",
                 },
                 {
                   title: "Malý dotek. Hotovo.",
