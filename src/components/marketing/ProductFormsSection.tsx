@@ -191,7 +191,8 @@ export function ProductFormsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden"
+      id="cards"
+      className="relative w-full scroll-mt-24 overflow-hidden"
       style={{ aspectRatio: `${IMAGE_W} / ${IMAGE_H}` }}
     >
       {/* Originální WebP bez Next optimalizace — jinak se fotky rozmažou */}

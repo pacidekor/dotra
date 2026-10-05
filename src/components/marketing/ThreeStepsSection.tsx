@@ -30,7 +30,7 @@ export function ThreeStepsSection() {
   const [open, setOpen] = useState(1);
 
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section id="jak-to-funguje" className="scroll-mt-24 bg-white py-16 sm:py-24">
       <div className="mx-auto w-[92%] max-w-[1700px]">
         <div>
           <h2

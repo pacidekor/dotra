@@ -34,15 +34,7 @@ export function FaqSection() {
   const [open, setOpen] = useState(2);
 
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <div className="mx-auto w-[92%] max-w-[1700px]">
-        <div className="grid items-start gap-10 lg:grid-cols-[0.3fr_0.7fr] lg:gap-14 xl:gap-20">
-          <div className="lg:sticky lg:top-28">
-            <h2
-              className={`${chillax.className} text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
-            >
-              Ještě vás možná zajímá.
-            </h2>
+    <section id="pouziti" className="scroll-mt-24 bg-white py-16 sm:py-24">
             <p className="mt-3 max-w-xs text-base leading-relaxed text-foreground/50 sm:mt-4 sm:text-lg">
               Vše důležité před prvním přiložením.
             </p>
