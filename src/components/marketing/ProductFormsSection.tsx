@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { chillax } from "@/lib/fonts";
 
 /** Originální rozměr všech backgroundsekce*.webp */
 const IMAGE_W = 1672;
@@ -216,6 +217,12 @@ export function ProductFormsSection() {
           }`}
         />
       ))}
+
+      <h2
+        className={`${chillax.className} pointer-events-none absolute top-[6%] left-[4%] z-[5] max-w-[14ch] text-left text-[clamp(1.75rem,4.2vw,3.75rem)] leading-[1.05] font-bold tracking-[-0.035em] text-foreground sm:left-[4%]`}
+      >
+        Různé podoby. Jedna Dotra.
+      </h2>
 
       {hotspots.map((hotspot) => (
         <div
