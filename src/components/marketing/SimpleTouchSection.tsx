@@ -6,13 +6,13 @@ export function SimpleTouchSection() {
   return (
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto w-[92%] max-w-[1700px]">
-        <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-3xl">
           <h2
             className={`${chillax.className} whitespace-nowrap text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
           >
             Takhle jednoduché to je.
           </h2>
-          <p className="max-w-sm text-base leading-relaxed text-foreground/50 sm:text-lg lg:max-w-xs lg:text-right">
+          <p className="mt-3 text-base leading-relaxed text-foreground/50 sm:mt-4 sm:text-lg">
             Jeden dotyk. Okamžitý přístup ke všemu důležitému.
           </p>
         </div>
