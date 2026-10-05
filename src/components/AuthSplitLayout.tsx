@@ -5,14 +5,15 @@ import { chillax } from "@/lib/fonts";
 
 type AuthSplitLayoutProps = {
   children: ReactNode;
-  imageSrc?: string;
+  /** Optional — when set, fills the right-side canvas. */
+  imageSrc?: string | null;
   imageAlt?: string;
 };
 
 export function AuthSplitLayout({
   children,
-  imageSrc = "/images/img2.webp",
-  imageAlt = "dotra — váš podnik na jednom místě",
+  imageSrc = null,
+  imageAlt = "dotra",
 }: AuthSplitLayoutProps) {
   return (
     <main className="flex min-h-dvh items-center justify-center bg-[#f3f3f5] px-3 py-3 text-foreground sm:px-5 sm:py-5 lg:px-8 lg:py-8">
@@ -32,14 +33,16 @@ export function AuthSplitLayout({
 
         <aside className="relative hidden p-4 pl-2 sm:p-5 lg:block lg:p-5 lg:pl-2 xl:p-6 xl:pl-3">
           <div className="relative h-full min-h-[560px] overflow-hidden rounded-[1.35rem] bg-[#f0f0f2] xl:rounded-[1.5rem]">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              fill
-              priority
-              sizes="(max-width: 1180px) 50vw, 560px"
-              className="object-cover object-center"
-            />
+            {imageSrc ? (
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                fill
+                priority
+                sizes="(max-width: 1180px) 50vw, 560px"
+                className="object-cover object-center"
+              />
+            ) : null}
           </div>
         </aside>
       </div>
