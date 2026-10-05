@@ -12,7 +12,7 @@ type AuthSplitLayoutProps = {
 
 export function AuthSplitLayout({
   children,
-  imageSrc = null,
+  imageSrc = "/images/loginregister.webp",
   imageAlt = "dotra",
 }: AuthSplitLayoutProps) {
   return (
