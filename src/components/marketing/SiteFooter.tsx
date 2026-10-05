@@ -85,9 +85,9 @@ export function SiteFooter() {
         </div>
 
         {/* Giant brand */}
-        <div className="overflow-hidden pb-6 pt-4 sm:pb-8 sm:pt-6">
+        <div className="@container w-full overflow-hidden pb-4 pt-2 sm:pb-6 sm:pt-4">
           <p
-            className={`${chillax.className} select-none text-[clamp(4.5rem,22vw,20rem)] leading-[0.85] font-bold tracking-[-0.06em] lowercase`}
+            className={`${chillax.className} w-full whitespace-nowrap text-[22.5cqw] leading-[0.8] font-bold tracking-[-0.07em] lowercase`}
           >
             dotra.
           </p>
