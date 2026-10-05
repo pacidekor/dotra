@@ -2,7 +2,7 @@ import type { Profile, ProfileLink } from "@/data/types";
 
 export const profile: Profile = {
   name: "Tomáš Dočekal",
-  tagline: "Co-Founder of Rezit, Vouchy and Dotra",
+  tagline: "Co-Founder of Rezit, Vouchy and dotra",
   // Nahraď vlastními fotkami v /public/images/ a uprav cesty níž
   bannerSrc: "/images/image-mesh-gradient.png",
   avatarSrc: "/images/rezitlogo.png",
@@ -11,7 +11,7 @@ export const profile: Profile = {
     email: "tomas@rezit.cz",
     url: "https://www.rezit.cz",
     organization: "Rezit",
-    title: "Co-Founder of Rezit, Vouchy and Dotra",
+    title: "Co-Founder of Rezit, Vouchy and dotra",
   },
 };
 

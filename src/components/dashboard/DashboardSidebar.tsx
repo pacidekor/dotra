@@ -71,7 +71,7 @@ export function DashboardSidebar() {
         <Link href="/" className="mb-10 block px-2">
           <Image
             src="/images/logodotra.webp"
-            alt="Dotra"
+            alt="dotra"
             width={200}
             height={72}
             priority
@@ -108,7 +108,7 @@ export function DashboardSidebar() {
           <Link href="/" className="flex items-center">
             <Image
               src="/images/logodotra.webp"
-              alt="Dotra"
+              alt="dotra"
               width={140}
               height={48}
               priority

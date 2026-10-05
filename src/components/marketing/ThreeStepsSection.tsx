@@ -8,14 +8,14 @@ import { chillax } from "@/lib/fonts";
 const steps = [
   {
     n: "01",
-    title: "Vyberte si svou Dotru.",
+    title: "Vyberte si svou dotru.",
     text: "Karta do peněženky, kolečko na stůl, nebo stojánek na recepci. Forma, která sedne vašemu provozu.",
     cta: { label: "Prohlédnout produkty", href: "#cards" },
   },
   {
     n: "02",
     title: "Dejte jí vlastní styl.",
-    text: "Vaše logo, barvy a obsah. Přesně tak, aby Dotra patřila k vám.",
+    text: "Vaše logo, barvy a obsah. Přesně tak, aby dotra patřila k vám.",
     cta: { label: "Prozkoumat možnosti", href: "/register" },
   },
   {
@@ -110,7 +110,7 @@ export function ThreeStepsSection() {
 
           <div className="w-full overflow-hidden rounded-[1.5rem] sm:rounded-[1.75rem]">
             <ImagePlaceholder
-              label="Dotra ve třech krocích"
+              label="dotra ve třech krocích"
               aspect="aspect-[8/5]"
             />
           </div>

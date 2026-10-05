@@ -39,10 +39,10 @@ export async function generateMetadata({
     .not("onboarding_completed_at", "is", null)
     .maybeSingle();
 
-  if (!data) return { title: "Profil | Dotra" };
+  if (!data) return { title: "Profil | dotra" };
 
   return {
-    title: `${data.display_name || "Profil"} | Dotra`,
+    title: `${data.display_name || "Profil"} | dotra`,
     description: data.tagline || undefined,
   };
 }

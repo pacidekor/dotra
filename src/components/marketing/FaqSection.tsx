@@ -9,24 +9,24 @@ const faqs = [
     a: "Ne. Stačí přiložit telefon — profil se otevře v prohlížeči. Bez stahování, bez registrace na straně zákazníka.",
   },
   {
-    q: "S jakými telefony Dotra funguje?",
+    q: "S jakými telefony dotra funguje?",
     a: "S většinou moderních telefonů s NFC. Funguje na iPhonu i Androidu, bez speciální aplikace.",
   },
   {
-    q: "Co všechno můžu přes Dotru sdílet?",
+    q: "Co všechno můžu přes dotru sdílet?",
     a: "Kontakt, web, menu nebo sociální sítě. Sami si vyberete, kam zákazníka po přiložení nasměrujete.",
   },
   {
     q: "Můžu později změnit obsah?",
-    a: "Ano. Obsah profilu upravíte kdykoliv v Dotra platformě — karta, kolečko i stojánek zůstávají stejné.",
+    a: "Ano. Obsah profilu upravíte kdykoliv v dotra platformě — karta, kolečko i stojánek zůstávají stejné.",
   },
   {
     q: "Můžete připravit design podle naší značky?",
-    a: "Ano. Logo, barvy i vizuál připravíme tak, aby Dotra seděla k vaší značce.",
+    a: "Ano. Logo, barvy i vizuál připravíme tak, aby dotra seděla k vaší značce.",
   },
   {
-    q: "Platí se za Dotru jednorázově, nebo měsíčně?",
-    a: "Fyzickou Dotru platíte jednorázově. Správa profilu a platforma běží podle zvoleného plánu.",
+    q: "Platí se za dotru jednorázově, nebo měsíčně?",
+    a: "Fyzickou dotru platíte jednorázově. Správa profilu a platforma běží podle zvoleného plánu.",
   },
 ] as const;
 

@@ -198,7 +198,7 @@ export function ProductFormsSection() {
       {/* Originální WebP bez Next optimalizace — jinak se fotky rozmažou */}
       <img
         src={baseImage}
-        alt="Dotra produkty: karta, čip a stojánek"
+        alt="dotra produkty: karta, čip a stojánek"
         width={IMAGE_W}
         height={IMAGE_H}
         decoding="async"

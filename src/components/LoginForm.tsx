@@ -45,7 +45,7 @@ export function LoginForm() {
       <div className="flex justify-center">
         <Image
           src="/images/logodotra.webp"
-          alt="Dotra"
+          alt="dotra"
           width={180}
           height={64}
           priority
@@ -55,7 +55,7 @@ export function LoginForm() {
 
       <div className="space-y-1 text-center">
         <h1 className="text-xl font-semibold tracking-tight">Přihlášení</h1>
-        <p className="text-sm text-muted">Vstup do Dotra dashboardu</p>
+        <p className="text-sm text-muted">Vstup do dotra dashboardu</p>
       </div>
 
       <div className="space-y-3">

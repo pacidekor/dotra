@@ -55,7 +55,7 @@ export function RegisterForm() {
       <div className="flex justify-center">
         <Image
           src="/images/logodotra.webp"
-          alt="Dotra"
+          alt="dotra"
           width={180}
           height={64}
           priority
@@ -66,7 +66,7 @@ export function RegisterForm() {
       <div className="space-y-1 text-center">
         <h1 className="text-xl font-semibold tracking-tight">Registrace</h1>
         <p className="text-sm text-muted">
-          Vytvořte účet a nastavte si Dotra profil.
+          Vytvořte účet a nastavte si dotra profil.
         </p>
       </div>
 

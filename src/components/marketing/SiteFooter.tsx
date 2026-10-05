@@ -11,7 +11,7 @@ export function SiteFooter() {
           <h2
             className={`${chillax.className} text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
           >
-            Najděte svou Dotru.
+            Najděte svou dotru.
           </h2>
           <Link
             href="#cards"
@@ -72,7 +72,7 @@ export function SiteFooter() {
 
           <div>
             <p className="text-[12px] font-medium tracking-[0.18em] text-foreground/40 uppercase">
-              Dotra
+              dotra
             </p>
             <ul className="mt-4 space-y-2.5 text-[15px] text-foreground">
               <li>
@@ -110,7 +110,7 @@ export function SiteFooter() {
 
         {/* Legal */}
         <div className="flex flex-col gap-4 border-t border-black/[0.08] py-6 text-sm text-foreground/40 sm:flex-row sm:items-center sm:justify-between sm:py-7">
-          <p>© {new Date().getFullYear()} Dotra</p>
+          <p>© {new Date().getFullYear()} dotra</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a href="#" className="transition-colors hover:text-foreground">
               Obchodní podmínky

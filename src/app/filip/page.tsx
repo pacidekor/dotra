@@ -4,7 +4,7 @@ import { links, profile } from "@/data/filip";
 
 export const metadata: Metadata = {
   title: "Filip Drbohlav | Odkazy",
-  description: "Co-Founder of Rezit, Vouchy and Dotra",
+  description: "Co-Founder of Rezit, Vouchy and dotra",
 };
 
 export default function FilipPage() {

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { RegisterForm } from "@/components/RegisterForm";
 
 export const metadata: Metadata = {
-  title: "Registrace | Dotra",
-  description: "Vytvořte si Dotra účet",
+  title: "Registrace | dotra",
+  description: "Vytvořte si dotra účet",
 };
 
 export default function RegisterPage() {

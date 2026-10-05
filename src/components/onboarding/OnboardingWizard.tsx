@@ -435,7 +435,7 @@ export function OnboardingWizard({
                 onChange={(event) => setTagline(event.target.value)}
                 rows={3}
                 className="w-full rounded-xl border border-border bg-surface px-3.5 py-3 text-sm outline-none focus:border-accent"
-                placeholder="Co-Founder of Rezit, Vouchy and Dotra"
+                placeholder="Co-Founder of Rezit, Vouchy and dotra"
               />
             </label>
           ) : null}

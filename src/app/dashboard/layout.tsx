@@ -11,7 +11,7 @@ import {
 import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = {
-  title: "Dashboard | Dotra",
+  title: "Dashboard | dotra",
   description: "Nastavení link tree profilu",
 };
 

@@ -2,7 +2,7 @@ import type { Profile, ProfileLink } from "@/data/types";
 
 export const profile: Profile = {
   name: "Filip Drbohlav",
-  tagline: "Co-Founder of Rezit, Vouchy and Dotra",
+  tagline: "Co-Founder of Rezit, Vouchy and dotra",
   // Nahraď vlastními fotkami v /public/images/ a uprav cesty níž
   bannerSrc: "/images/image-mesh-gradient.png",
   avatarSrc: "/a90f7318-3f1a-4d3f-ab20-d322aeb99e93.jpg",
@@ -11,7 +11,7 @@ export const profile: Profile = {
     email: "filip@rezit.cz",
     url: "https://www.rezit.cz",
     organization: "Rezit",
-    title: "Co-Founder of Rezit, Vouchy and Dotra",
+    title: "Co-Founder of Rezit, Vouchy and dotra",
   },
 };
 

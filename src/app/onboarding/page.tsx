@@ -5,8 +5,8 @@ import type { DotraLinkRow, DotraProfileRow } from "@/lib/dotra-profile";
 import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = {
-  title: "Nastavení profilu | Dotra",
-  description: "Onboarding Dotra profilu",
+  title: "Nastavení profilu | dotra",
+  description: "Onboarding dotra profilu",
 };
 
 function emptyProfile(userId: string): DotraProfileRow {
@@ -57,14 +57,14 @@ export default async function OnboardingPage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/logodotra.webp"
-          alt="Dotra"
+          alt="dotra"
           className="h-9 w-auto object-contain"
         />
       </div>
       {(upsertError || profileError) && !profile ? (
         <div className="mx-auto mb-6 max-w-xl rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           Nepodařilo se načíst profil z databáze. Ověř, že je spuštěná migrace
-          `dotra_profiles` v Supabase projektu Dotra.
+          `dotra_profiles` v Supabase projektu dotra.
         </div>
       ) : null}
       <OnboardingWizard

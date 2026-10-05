@@ -19,7 +19,7 @@ export function SimpleTouchSection() {
 
         <div className="relative mt-10 overflow-hidden rounded-[1.75rem] sm:mt-12 sm:rounded-[2rem]">
           <ImagePlaceholder
-            label="Dotra v praxi — foto"
+            label="dotra v praxi — foto"
             aspect="aspect-[16/10] sm:aspect-[21/10]"
             className="rounded-none"
           />
@@ -38,7 +38,7 @@ export function SimpleTouchSection() {
                 <path d="M8 5.14v13.72L19 12 8 5.14z" />
               </svg>
             </span>
-            Dotra v praxi
+            dotra v praxi
           </button>
         </div>
 

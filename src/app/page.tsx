@@ -54,7 +54,7 @@ export default function Home() {
           >
             <Image
               src="/images/dotraheroilustracefixed.webp"
-              alt="Dotra Card a telefon"
+              alt="dotra card a telefon"
               width={2100}
               height={900}
               priority

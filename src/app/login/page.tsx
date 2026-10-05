@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { LoginForm } from "@/components/LoginForm";
 
 export const metadata: Metadata = {
-  title: "Přihlášení | Dotra",
-  description: "Přihlášení do Dotra dashboardu",
+  title: "Přihlášení | dotra",
+  description: "Přihlášení do dotra dashboardu",
 };
 
 export default function LoginPage() {

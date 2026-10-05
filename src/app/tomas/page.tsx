@@ -4,7 +4,7 @@ import { links, profile } from "@/data/tomas";
 
 export const metadata: Metadata = {
   title: "Tomáš Dočekal | Odkazy",
-  description: "Co-Founder of Rezit, Vouchy and Dotra",
+  description: "Co-Founder of Rezit, Vouchy and dotra",
 };
 
 export default function TomasPage() {
