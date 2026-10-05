@@ -32,9 +32,9 @@ export function ThreeStepsSection() {
   return (
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto w-[92%] max-w-[1700px]">
-        <div className="max-w-3xl">
+        <div>
           <h2
-            className={`${chillax.className} text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
+            className={`${chillax.className} whitespace-nowrap text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em]`}
           >
             Vaše dotra. ve třech krocích.
           </h2>
