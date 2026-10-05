@@ -219,7 +219,7 @@ export function ProductFormsSection() {
       ))}
 
       <h2
-        className={`${chillax.className} pointer-events-none absolute top-[6%] left-[4%] z-[5] max-w-[14ch] text-left text-[clamp(1.75rem,4.2vw,3.75rem)] leading-[1.05] font-bold tracking-[-0.035em] text-foreground sm:left-[4%]`}
+        className={`${chillax.className} pointer-events-none absolute top-[6%] left-[4%] z-[5] max-w-5xl text-left text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-bold tracking-[-0.035em] text-foreground`}
       >
         Různé podoby. Jedna Dotra.
       </h2>
