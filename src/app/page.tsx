@@ -4,6 +4,7 @@ import { ImagePlaceholder } from "@/components/marketing/ImagePlaceholder";
 import { ProductFormsSection } from "@/components/marketing/ProductFormsSection";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
+import { ThreeStepsSection } from "@/components/marketing/ThreeStepsSection";
 import { chillax } from "@/lib/fonts";
 
 const headline = chillax.className;
@@ -139,6 +140,8 @@ export default function Home() {
 
         {/* Intro sekce */}
         <ProductFormsSection />
+
+        <ThreeStepsSection />
 
         {/* Jak to funguje */}
         <section
