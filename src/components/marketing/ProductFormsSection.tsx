@@ -39,7 +39,7 @@ const productInfo: Record<
     title: string;
     text: string;
     tags: string[];
-    placement: "above" | "below";
+    placement: "above" | "below" | "left" | "right";
   }
 > = {
   card: {
@@ -61,7 +61,7 @@ const productInfo: Record<
     title: "Na recepci.",
     text: "Prezentace podniku na místě. Ideální na recepci — nebo rovnou jen na recenze, menu a to nejdůležitější, co má návštěvník udělat.",
     tags: ["Prezentace", "Recenze", "Menu"],
-    placement: "above",
+    placement: "left",
   },
 };
 
@@ -225,7 +225,7 @@ export function ProductFormsSection() {
     <section
       ref={sectionRef}
       id="cards"
-      className="relative w-full scroll-mt-24 overflow-hidden"
+      className="relative w-full scroll-mt-24 overflow-visible"
       style={{ aspectRatio: `${IMAGE_W} / ${IMAGE_H}` }}
     >
       {/* Originální WebP bez Next optimalizace — jinak se fotky rozmažou */}
@@ -352,29 +352,47 @@ export function ProductFormsSection() {
         </div>
       ))}
 
-      {/* Hover info cards — nad / pod daným produktem */}
+      {/* Hover info cards — u produktu, bez oříznutí mimo viditelnou oblast */}
       {hotspots.map((hotspot) => {
         const info = productInfo[hotspot.id];
         const isActive = active === hotspot.id;
-        const centerX = hotspot.left + hotspot.width / 2;
-        const anchorY =
-          info.placement === "above"
-            ? hotspot.top
-            : hotspot.top + hotspot.height;
+        const centerX = clamp(
+          hotspot.left + hotspot.width / 2,
+          IMAGE_W * 0.18,
+          IMAGE_W * 0.82,
+        );
+
+        let left = centerX;
+        let top = hotspot.top;
+        let transform = `translate(-50%, calc(-100% - 0.75rem)) translateY(${isActive ? "0" : "8px"})`;
+
+        if (info.placement === "below") {
+          top = hotspot.top + hotspot.height;
+          transform = `translate(-50%, 0.75rem) translateY(${isActive ? "0" : "-8px"})`;
+        } else if (info.placement === "left") {
+          // Vedle produktu — ať karta sedí u středu a není oříznutá nahoře
+          left = hotspot.left;
+          top = hotspot.top + hotspot.height * 0.38;
+          transform = `translate(calc(-100% - 0.9rem), -50%) translateX(${isActive ? "0" : "10px"})`;
+        } else if (info.placement === "right") {
+          left = hotspot.left + hotspot.width;
+          top = hotspot.top + hotspot.height * 0.38;
+          transform = `translate(0.9rem, -50%) translateX(${isActive ? "0" : "-10px"})`;
+        }
 
         return (
           <div
             key={`info-${hotspot.id}`}
+            aria-hidden={!isActive}
             className={`pointer-events-none absolute z-20 w-[min(86vw,20rem)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              isActive ? "opacity-100" : "opacity-0"
+              isActive
+                ? "visible opacity-100"
+                : "invisible opacity-0"
             }`}
             style={{
-              left: toPercent(centerX, IMAGE_W),
-              top: toPercent(anchorY, IMAGE_H),
-              transform:
-                info.placement === "above"
-                  ? `translate(-50%, calc(-100% - 0.75rem)) translateY(${isActive ? "0" : "6px"})`
-                  : `translate(-50%, 0.75rem) translateY(${isActive ? "0" : "-6px"})`,
+              left: toPercent(left, IMAGE_W),
+              top: toPercent(top, IMAGE_H),
+              transform,
             }}
           >
             <div className="rounded-[1.35rem] border border-black/[0.06] bg-white/90 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] backdrop-blur-xl sm:p-5">
