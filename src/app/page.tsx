@@ -73,7 +73,7 @@ export default function Home() {
 
             <div className="mt-10 grid grid-cols-3 gap-3 sm:mt-14 sm:gap-5">
               {[
-                "Kontakt, který nezapadne",
+                "Kontakt, který nezapadne.",
                 "Váš podnik. Na jednom místě.",
                 "Malý dotek. Hotovo.",
               ].map((title) => (
