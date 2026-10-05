@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ImagePlaceholder } from "@/components/marketing/ImagePlaceholder";
+import { ProductFormsSection } from "@/components/marketing/ProductFormsSection";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { chillax } from "@/lib/fonts";
@@ -137,13 +138,7 @@ export default function Home() {
         </section>
 
         {/* Intro sekce */}
-        <section
-          className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url(/images/backgroundsekce.webp)",
-            aspectRatio: "1672 / 941",
-          }}
-        />
+        <ProductFormsSection />
 
         {/* Jak to funguje */}
         <section
