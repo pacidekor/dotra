@@ -3,6 +3,11 @@ import { redirect } from "next/navigation";
 import { DashboardProvider } from "@/components/dashboard/DashboardContext";
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import {
+  aggregateDashboardStats,
+  emptyDashboardStats,
+  type AnalyticsEventRow,
+} from "@/lib/analytics";
+import {
   linksFromRows,
   profileFromRow,
   type DotraLinkRow,
@@ -46,6 +51,23 @@ export default async function DashboardLayout({
     .order("sort_order", { ascending: true });
 
   const row = profile as DotraProfileRow;
+  const uiLinks = linksFromRows((links ?? []) as DotraLinkRow[]);
+
+  const since = new Date();
+  since.setDate(since.getDate() - 90);
+
+  const { data: events, error: eventsError } = await supabase
+    .from("dotra_events")
+    .select(
+      "event_type, link_id, link_href, link_icon, link_label, visitor_key, created_at",
+    )
+    .eq("profile_id", user.id)
+    .gte("created_at", since.toISOString())
+    .order("created_at", { ascending: true });
+
+  const initialStats = eventsError
+    ? emptyDashboardStats()
+    : aggregateDashboardStats((events ?? []) as AnalyticsEventRow[], uiLinks);
 
   return (
     <DashboardProvider
@@ -53,7 +75,8 @@ export default async function DashboardLayout({
       userEmail={user.email ?? ""}
       slug={row.slug}
       initialProfile={profileFromRow(row)}
-      initialLinks={linksFromRows((links ?? []) as DotraLinkRow[])}
+      initialLinks={uiLinks}
+      initialStats={initialStats}
     >
       <div className="min-h-dvh bg-background">
         <DashboardSidebar />

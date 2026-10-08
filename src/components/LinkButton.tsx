@@ -1,13 +1,21 @@
+"use client";
+
 import { LinkIconGlyph } from "@/components/LinkIcons";
-import type { ProfileLink } from "@/data/links";
+import type { ProfileLink } from "@/data/types";
 
 type LinkButtonProps = {
   link: ProfileLink;
   index: number;
   onWifiClick?: () => void;
+  onTrackClick?: () => void;
 };
 
-export function LinkButton({ link, index, onWifiClick }: LinkButtonProps) {
+export function LinkButton({
+  link,
+  index,
+  onWifiClick,
+  onTrackClick,
+}: LinkButtonProps) {
   const isWifi =
     Boolean(onWifiClick) &&
     (link.id === "wifi" ||
@@ -60,6 +68,7 @@ export function LinkButton({ link, index, onWifiClick }: LinkButtonProps) {
       {...(isExternal
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
+      onClick={() => onTrackClick?.()}
       className={className}
       style={{ animationDelay: `${680 + index * 75}ms` }}
     >

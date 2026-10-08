@@ -11,6 +11,7 @@ import {
 import {
   initialDashboardState,
   type DashboardState,
+  type DashboardStats,
 } from "@/data/dashboard-mock";
 import type { Profile, ProfileLink, WifiConfig } from "@/data/types";
 import {
@@ -46,6 +47,7 @@ type DashboardProviderProps = {
   slug: string | null;
   initialProfile: Profile;
   initialLinks: ProfileLink[];
+  initialStats: DashboardStats;
 };
 
 export function DashboardProvider({
@@ -55,11 +57,13 @@ export function DashboardProvider({
   slug: initialSlug,
   initialProfile,
   initialLinks,
+  initialStats,
 }: DashboardProviderProps) {
   const [state, setState] = useState<DashboardState>({
     ...initialDashboardState,
     profile: initialProfile,
     links: initialLinks,
+    stats: initialStats,
   });
   const [slug, setSlugState] = useState(initialSlug || "");
   const [savedAt, setSavedAt] = useState<Date | null>(null);

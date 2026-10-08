@@ -13,7 +13,7 @@ export default function DashboardStatsPage() {
           Statistiky
         </h1>
         <p className="mt-1 text-sm text-muted">
-          Přehled návštěv a prokliků (zatím mock data).
+          Návštěvy a prokliky z veřejného profilu za posledních 90 dní.
         </p>
       </div>
       <StatsPanel stats={state.stats} links={state.links} />

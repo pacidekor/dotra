@@ -1,21 +1,63 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { LinkButton } from "@/components/LinkButton";
 import { ProfileHeader } from "@/components/ProfileHeader";
 import { SaveContactButton } from "@/components/SaveContactButton";
 import { WifiSheet } from "@/components/WifiSheet";
 import type { Profile, ProfileLink } from "@/data/types";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 type ProfilePageProps = {
   profile: Profile;
   links: ProfileLink[];
+  profileId?: string;
 };
 
-export function ProfilePage({ profile, links }: ProfilePageProps) {
+export function ProfilePage({ profile, links, profileId }: ProfilePageProps) {
   const [wifiOpen, setWifiOpen] = useState(false);
 
-  const openWifi = useCallback(() => setWifiOpen(true), []);
+  useEffect(() => {
+    if (!profileId) return;
+    trackAnalyticsEvent({ profileId, type: "view" });
+  }, [profileId]);
+
+  const trackClick = useCallback(
+    (link: ProfileLink) => {
+      if (!profileId) return;
+      trackAnalyticsEvent({
+        profileId,
+        type: "click",
+        linkId: link.id,
+        linkHref: link.href,
+        linkIcon: link.icon,
+        linkLabel: link.label,
+      });
+    },
+    [profileId],
+  );
+
+  const openWifi = useCallback(() => {
+    const wifiLink = links.find(
+      (link) =>
+        link.icon === "wifi" ||
+        link.id === "wifi" ||
+        link.href === "#wifi" ||
+        link.href.startsWith("#wifi"),
+    );
+    if (wifiLink) trackClick(wifiLink);
+    else if (profileId) {
+      trackAnalyticsEvent({
+        profileId,
+        type: "click",
+        linkHref: "#wifi",
+        linkIcon: "wifi",
+        linkLabel: "Wi‑Fi",
+      });
+    }
+    setWifiOpen(true);
+  }, [links, profileId, trackClick]);
+
   const closeWifi = useCallback(() => setWifiOpen(false), []);
 
   return (
@@ -62,6 +104,7 @@ export function ProfilePage({ profile, links }: ProfilePageProps) {
                 link={link}
                 index={index}
                 onWifiClick={profile.wifi ? openWifi : undefined}
+                onTrackClick={profileId ? () => trackClick(link) : undefined}
               />
             ))}
           </nav>

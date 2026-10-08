@@ -82,5 +82,7 @@ export default async function DynamicProfilePage({ params }: PageProps) {
     };
   }
 
-  return <ProfilePage profile={uiProfile} links={uiLinks} />;
+  return (
+    <ProfilePage profile={uiProfile} links={uiLinks} profileId={row.id} />
+  );
 }

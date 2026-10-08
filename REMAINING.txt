@@ -32,10 +32,10 @@ Priorita produkt (doporučené pořadí)
    - nutná migrace: supabase/migrations/20261008_dotra_wifi.sql
      (spustit v Supabase SQL editoru, pokud ještě neběží)
 
-4) Reálná analytika
-   - dashboard stats jsou mock
-   - tracking návštěv profilu + kliků na odkazy
-   - napojení StatsPanel na reálná data
+4) Reálná analytika — HOTOTO (kód)
+   - tracking view/click na veřejném DB profilu
+   - StatsPanel napojený na dotra_events
+   - nutná migrace: supabase/migrations/20261008_dotra_analytics.sql
 
 5) Confirm email UX (pokud bude zapnuté v Supabase)
    - hlášky po registraci
