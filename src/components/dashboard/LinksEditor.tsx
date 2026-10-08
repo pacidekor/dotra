@@ -141,7 +141,7 @@ export function LinksEditor({ links, onChange, clicksByLink }: LinksEditorProps)
       </div>
 
       {showForm ? (
-        <div className="space-y-3 rounded-2xl border border-border bg-surface p-4">
+        <div className="space-y-3 rounded-2xl border border-black/[0.06] bg-white/90 p-4">
           <p className="text-sm font-medium text-foreground">
             {editingId ? "Upravit kartu" : "Nová karta"}
           </p>
@@ -273,7 +273,7 @@ function SortableLinkRow({
     <li
       ref={setNodeRef}
       style={style}
-      className={`rounded-2xl border border-border bg-surface p-3 sm:flex sm:items-center sm:gap-3 ${
+      className={`rounded-2xl border border-black/[0.06] bg-white/90 p-3 sm:flex sm:items-center sm:gap-3 ${
         isDragging ? "z-10 shadow-lg opacity-95" : ""
       }`}
     >

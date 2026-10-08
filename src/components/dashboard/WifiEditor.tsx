@@ -11,7 +11,7 @@ export function WifiEditor({ wifi, onChange }: WifiEditorProps) {
   const active = wifi !== undefined;
 
   return (
-    <section className="space-y-4 rounded-2xl border border-border bg-surface p-3.5 sm:p-4">
+    <section className="space-y-4 rounded-2xl border border-black/[0.06] bg-white/90 p-3.5 sm:p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="text-sm font-medium text-foreground">Wi‑Fi</h3>

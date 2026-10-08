@@ -37,18 +37,18 @@ function formatNumber(value: number) {
 const visitsConfig = {
   visits: {
     label: "Návštěvy",
-    color: "var(--chart-1)",
+    color: "#111111",
   },
 } satisfies ChartConfig;
 
 const activityConfig = {
   visits: {
     label: "Návštěvy",
-    color: "var(--chart-1)",
+    color: "#111111",
   },
   clicks: {
     label: "Prokliky",
-    color: "var(--chart-2)",
+    color: "#ccfc4e",
   },
 } satisfies ChartConfig;
 
@@ -65,13 +65,25 @@ export function StatsPanel({ stats, links }: StatsPanelProps) {
   return (
     <section className="space-y-5">
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <StatCard label="Návštěvy" value={formatNumber(stats.visits)} />
-        <StatCard label="Načtení stránky" value={formatNumber(stats.pageViews)} />
-        <StatCard label="Prokliky celkem" value={formatNumber(stats.totalClicks)} />
+        <StatCard
+          label="Návštěvy"
+          value={formatNumber(stats.visits)}
+          tone="lime"
+        />
+        <StatCard
+          label="Načtení stránky"
+          value={formatNumber(stats.pageViews)}
+          tone="ink"
+        />
+        <StatCard
+          label="Prokliky celkem"
+          value={formatNumber(stats.totalClicks)}
+          tone="soft"
+        />
       </div>
 
       <div className="grid gap-5 xl:grid-cols-2">
-        <Card className="border-border/80 shadow-none ring-0">
+        <Card className="rounded-2xl border-black/[0.06] bg-white/90 shadow-none ring-0">
           <CardHeader>
             <CardTitle>Návštěvy za posledních 7 dní</CardTitle>
             <CardDescription>
@@ -143,7 +155,7 @@ export function StatsPanel({ stats, links }: StatsPanelProps) {
           </CardContent>
         </Card>
 
-        <Card className="border-border/80 shadow-none ring-0">
+        <Card className="rounded-2xl border-black/[0.06] bg-white/90 shadow-none ring-0">
           <CardHeader>
             <CardTitle>Aktivita podle dne</CardTitle>
             <CardDescription>
@@ -211,7 +223,7 @@ export function StatsPanel({ stats, links }: StatsPanelProps) {
         </Card>
       </div>
 
-      <Card className="border-border/80 shadow-none ring-0">
+      <Card className="rounded-2xl border-black/[0.06] bg-white/90 shadow-none ring-0">
         <CardHeader>
           <CardTitle>Prokliky podle karet</CardTitle>
           <CardDescription>
@@ -228,9 +240,9 @@ export function StatsPanel({ stats, links }: StatsPanelProps) {
                     {formatNumber(clicks)}
                   </span>
                 </div>
-                <div className="bg-border/80 h-1.5 overflow-hidden rounded-full">
+                <div className="h-1.5 overflow-hidden rounded-full bg-[#ececef]">
                   <div
-                    className="bg-foreground/80 h-full rounded-full transition-[width] duration-700 ease-out"
+                    className="h-full rounded-full bg-[#ccfc4e] transition-[width] duration-700 ease-out"
                     style={{ width: `${(clicks / maxClicks) * 100}%` }}
                   />
                 </div>
@@ -243,12 +255,33 @@ export function StatsPanel({ stats, links }: StatsPanelProps) {
   );
 }
 
-function StatCard({ label, value }: { label: string; value: string }) {
+function StatCard({
+  label,
+  value,
+  tone,
+}: {
+  label: string;
+  value: string;
+  tone: "lime" | "ink" | "soft";
+}) {
+  const toneClass =
+    tone === "lime"
+      ? "border-[#ccfc4e]/70 bg-[#ccfc4e]"
+      : tone === "ink"
+        ? "border-black/90 bg-[#111111] text-white"
+        : "border-black/[0.06] bg-white/90";
+
+  const labelClass =
+    tone === "ink" ? "text-white/60" : "text-foreground/55";
+  const valueClass = tone === "ink" ? "text-white" : "text-foreground";
+
   return (
-    <Card className="border-border/80 shadow-none ring-0">
+    <Card className={`rounded-2xl shadow-none ring-0 ${toneClass}`}>
       <CardHeader className="pb-2">
-        <CardDescription>{label}</CardDescription>
-        <CardTitle className="text-2xl tracking-tight tabular-nums">
+        <CardDescription className={labelClass}>{label}</CardDescription>
+        <CardTitle
+          className={`text-2xl tracking-tight tabular-nums ${valueClass}`}
+        >
           {value}
         </CardTitle>
       </CardHeader>

@@ -21,15 +21,17 @@
   --accent-foreground: oklch(0.985 0 0);
   --accent-hover: #2a2a2a;
   --surface: #fafafa;
+  --brand: #ccfc4e;
+  --brand-ink: #0a0a0a;
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.28 0 0);
-  --chart-2: oklch(0.72 0 0);
-  --chart-3: oklch(0.55 0 0);
-  --chart-4: oklch(0.42 0 0);
-  --chart-5: oklch(0.35 0 0);
+  --chart-1: #111111;
+  --chart-2: #ccfc4e;
+  --chart-3: #8b8b90;
+  --chart-4: #3a3a3a;
+  --chart-5: #e8e8ea;
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -51,6 +53,8 @@
   --color-surface: var(--surface);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
   --color-border: var(--border);
   --color-card: var(--card);
   --font-sans: var(--font-montserrat);
@@ -91,6 +95,14 @@
 
 body {
   font-family: var(--font-montserrat);
+}
+
+/* Dashboard shell — soft wash like marketing, not flat grey */
+.dashboard-shell {
+  background:
+    radial-gradient(ellipse 70% 45% at 12% -10%, rgba(204, 252, 78, 0.28), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 0%, rgba(17, 17, 17, 0.05), transparent 50%),
+    linear-gradient(180deg, #f7f7f8 0%, #f0f0f2 100%);
 }
 
 /* Banner: jednoduchý soft zoom-in, full-bleed od začátku */

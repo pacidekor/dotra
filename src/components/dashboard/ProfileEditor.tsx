@@ -24,7 +24,7 @@ export function ProfileEditor({
 
   return (
     <section className="space-y-4">
-      <div className="space-y-4 rounded-2xl border border-border bg-surface p-3.5 sm:p-4">
+      <div className="space-y-4 rounded-2xl border border-black/[0.06] bg-white/90 p-3.5 sm:p-4">
         <label className="block space-y-1.5">
           <span className="text-sm font-medium text-foreground">Název</span>
           <input

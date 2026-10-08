@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 import { useDashboard } from "@/components/dashboard/DashboardContext";
+import { chillax } from "@/lib/fonts";
 import { createClient } from "@/utils/supabase/client";
 
 export default function DashboardSettingsPage() {
@@ -82,16 +83,18 @@ export default function DashboardSettingsPage() {
   return (
     <div className="mx-auto max-w-xl space-y-8">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+        <h1
+          className={`${chillax.className} text-[clamp(1.75rem,3vw,2.35rem)] leading-[1.05] font-bold tracking-[-0.035em] text-foreground`}
+        >
           Nastavení
         </h1>
-        <p className="mt-1 text-sm text-muted">
+        <p className="mt-2 text-[15px] text-foreground/55">
           Účet, veřejná adresa a odhlášení.
         </p>
       </div>
 
-      <section className="space-y-4 rounded-2xl border border-border bg-surface p-4 sm:p-5">
-        <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-muted">
+      <section className="space-y-4 rounded-2xl border border-black/[0.06] bg-white/90 p-4 sm:p-5">
+        <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-foreground/45">
           Profil
         </h2>
 
@@ -157,8 +160,8 @@ export default function DashboardSettingsPage() {
         </label>
       </section>
 
-      <section className="space-y-4 rounded-2xl border border-border bg-surface p-4 sm:p-5">
-        <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-muted">
+      <section className="space-y-4 rounded-2xl border border-black/[0.06] bg-white/90 p-4 sm:p-5">
+        <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-foreground/45">
           Změna hesla
         </h2>
 
@@ -215,18 +218,18 @@ export default function DashboardSettingsPage() {
         </form>
       </section>
 
-      <section className="space-y-3 rounded-2xl border border-border bg-surface p-4 sm:p-5">
-        <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-muted">
+      <section className="space-y-3 rounded-2xl border border-black/[0.06] bg-white/90 p-4 sm:p-5">
+        <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-foreground/45">
           Relace
         </h2>
-        <p className="text-sm text-muted">
+        <p className="text-sm text-foreground/55">
           Odhlášení ukončí session na tomto zařízení.
         </p>
         <button
           type="button"
           disabled={loggingOut}
           onClick={() => void handleLogout()}
-          className="rounded-xl border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-card disabled:opacity-70"
+          className="rounded-full border border-black/[0.08] bg-white px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-[#f5f5f7] disabled:opacity-70"
         >
           {loggingOut ? "Odhlašuji…" : "Odhlásit se"}
         </button>

@@ -78,7 +78,7 @@ export default async function DashboardLayout({
       initialLinks={uiLinks}
       initialStats={initialStats}
     >
-      <div className="min-h-dvh bg-background">
+      <div className="dashboard-shell min-h-dvh">
         <DashboardSidebar />
         <div className="lg:pl-64">
           <div className="w-full px-4 py-6 sm:px-6 lg:px-8 lg:py-8">

@@ -6,6 +6,7 @@ import { LivePreview } from "@/components/dashboard/LivePreview";
 import { ProfileEditor } from "@/components/dashboard/ProfileEditor";
 import { WifiEditor } from "@/components/dashboard/WifiEditor";
 import { useDashboard } from "@/components/dashboard/DashboardContext";
+import { chillax } from "@/lib/fonts";
 
 export default function DashboardProfilePage() {
   const {
@@ -28,10 +29,12 @@ export default function DashboardProfilePage() {
     <div className="space-y-6 pb-24 xl:space-y-8 xl:pb-0">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h1 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+          <h1
+            className={`${chillax.className} text-[clamp(1.75rem,3vw,2.35rem)] leading-[1.05] font-bold tracking-[-0.035em] text-foreground`}
+          >
             Profil
           </h1>
-          <p className="mt-1 text-sm text-muted">
+          <p className="mt-2 text-[15px] text-foreground/55">
             Uprav profil, fotky i karty odkazů.
           </p>
         </div>
@@ -42,7 +45,7 @@ export default function DashboardProfilePage() {
               {saveError}
             </span>
           ) : savedAt ? (
-            <span className="text-xs text-muted">
+            <span className="text-xs text-foreground/50">
               Uloženo{" "}
               {savedAt.toLocaleTimeString("cs-CZ", {
                 hour: "2-digit",
@@ -54,7 +57,7 @@ export default function DashboardProfilePage() {
             type="button"
             onClick={() => void save()}
             disabled={saving}
-            className="rounded-xl bg-foreground px-4 py-2.5 text-sm font-medium text-card transition-colors hover:bg-accent-hover disabled:opacity-70"
+            className="rounded-full bg-[#ccfc4e] px-5 py-2.5 text-sm font-medium text-black transition-opacity hover:opacity-85 disabled:opacity-70"
           >
             {saving ? "Ukládám…" : "Uložit"}
           </button>
@@ -137,7 +140,7 @@ export default function DashboardProfilePage() {
             type="button"
             onClick={() => void save()}
             disabled={saving}
-            className="rounded-xl bg-foreground px-5 py-3 text-sm font-medium text-card disabled:opacity-70"
+            className="rounded-full bg-[#ccfc4e] px-5 py-3 text-sm font-medium text-black disabled:opacity-70"
           >
             {saving ? "Ukládám…" : "Uložit"}
           </button>

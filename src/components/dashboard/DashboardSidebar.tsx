@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 import { useDashboard } from "@/components/dashboard/DashboardContext";
+import { chillax } from "@/lib/fonts";
 import { createClient } from "@/utils/supabase/client";
 
 const navItems: {
@@ -60,23 +60,17 @@ export function DashboardSidebar() {
   async function handleLogout() {
     const supabase = createClient();
     await supabase.auth.signOut();
-    // Wipe leftover chunked auth cookies that can cause HTTP 431
     window.location.href = "/auth/clear";
   }
 
   return (
     <>
-      {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border bg-card px-4 py-6 lg:flex">
-        <Link href="/" className="mb-10 block px-2">
-          <Image
-            src="/images/logodotra.webp"
-            alt="dotra"
-            width={200}
-            height={72}
-            priority
-            className="h-11 w-auto object-contain"
-          />
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-black/[0.06] bg-white/80 px-4 py-6 backdrop-blur-xl lg:flex">
+        <Link
+          href="/"
+          className={`${chillax.className} mb-10 block px-2 text-[1.85rem] leading-none font-semibold tracking-[-0.04em] text-foreground lowercase`}
+        >
+          dotra.
         </Link>
 
         <nav className="flex flex-1 flex-col gap-1" aria-label="Dashboard">
@@ -88,38 +82,33 @@ export function DashboardSidebar() {
         <div className="mt-auto space-y-2">
           <Link
             href={publicHref}
-            className="block rounded-xl border border-border px-3 py-2.5 text-center text-sm font-medium text-foreground transition-colors hover:bg-surface"
+            className="block rounded-full bg-[#ccfc4e] px-3 py-2.5 text-center text-sm font-medium text-black transition-opacity hover:opacity-85"
           >
             Veřejný profil
           </Link>
           <button
             type="button"
             onClick={handleLogout}
-            className="w-full rounded-xl bg-foreground px-3 py-2.5 text-sm font-medium text-card transition-colors hover:bg-accent-hover"
+            className="w-full rounded-full border border-black/[0.08] bg-white px-3 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-[#f5f5f7] hover:text-foreground"
           >
             Odhlásit se
           </button>
         </div>
       </aside>
 
-      {/* Mobile header */}
-      <header className="sticky top-0 z-40 border-b border-border bg-card lg:hidden">
+      <header className="sticky top-0 z-40 border-b border-black/[0.06] bg-white/80 backdrop-blur-xl lg:hidden">
         <div className="flex h-14 items-center justify-between px-4">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/images/logodotra.webp"
-              alt="dotra"
-              width={140}
-              height={48}
-              priority
-              className="h-8 w-auto object-contain"
-            />
+          <Link
+            href="/"
+            className={`${chillax.className} text-[1.55rem] leading-none font-semibold tracking-[-0.04em] text-foreground lowercase`}
+          >
+            dotra.
           </Link>
 
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex size-10 items-center justify-center rounded-xl border border-border text-foreground transition-colors hover:bg-surface"
+            className="flex size-10 items-center justify-center rounded-full border border-black/[0.08] bg-white text-foreground transition-colors hover:bg-[#f5f5f7]"
             aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
             aria-expanded={menuOpen}
           >
@@ -128,9 +117,12 @@ export function DashboardSidebar() {
         </div>
       </header>
 
-      {/* Mobile burger menu — pod headerem */}
       {menuOpen ? (
-        <div className="fixed inset-x-0 top-14 bottom-0 z-50 lg:hidden" role="dialog" aria-modal="true">
+        <div
+          className="fixed inset-x-0 top-14 bottom-0 z-50 lg:hidden"
+          role="dialog"
+          aria-modal="true"
+        >
           <button
             type="button"
             className="animate-sheet-backdrop absolute inset-0 bg-black/40"
@@ -138,8 +130,11 @@ export function DashboardSidebar() {
             onClick={() => setMenuOpen(false)}
           />
 
-          <div className="animate-menu-down relative z-10 flex max-h-[calc(100dvh-3.5rem)] flex-col border-b border-border bg-card shadow-[0_12px_32px_rgba(17,17,17,0.1)]">
-            <nav className="flex flex-col gap-1 px-4 pt-3 pb-4" aria-label="Dashboard">
+          <div className="animate-menu-down relative z-10 flex max-h-[calc(100dvh-3.5rem)] flex-col border-b border-black/[0.06] bg-white shadow-[0_12px_32px_rgba(17,17,17,0.1)]">
+            <nav
+              className="flex flex-col gap-1 px-4 pt-3 pb-4"
+              aria-label="Dashboard"
+            >
               {navItems.map((item) => (
                 <NavLink
                   key={item.href}
@@ -150,11 +145,11 @@ export function DashboardSidebar() {
               ))}
             </nav>
 
-            <div className="mt-auto space-y-2 border-t border-border px-4 pt-4 pb-4">
+            <div className="mt-auto space-y-2 border-t border-black/[0.06] px-4 pt-4 pb-4">
               <Link
                 href={publicHref}
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-xl border border-border px-3 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-surface"
+                className="block rounded-full bg-[#ccfc4e] px-3 py-3 text-center text-sm font-medium text-black transition-opacity hover:opacity-85"
               >
                 Veřejný profil
               </Link>
@@ -164,7 +159,7 @@ export function DashboardSidebar() {
                   setMenuOpen(false);
                   void handleLogout();
                 }}
-                className="w-full rounded-xl bg-foreground px-3 py-3 text-sm font-medium text-card transition-colors hover:bg-accent-hover"
+                className="w-full rounded-full border border-black/[0.08] bg-white px-3 py-3 text-sm font-medium text-foreground/80 transition-colors hover:bg-[#f5f5f7]"
               >
                 Odhlásit se
               </button>
@@ -193,10 +188,10 @@ function NavLink({
     <Link
       href={item.href}
       onClick={onNavigate}
-      className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
+      className={`flex items-center gap-3 rounded-full px-3 py-2.5 text-sm font-medium transition-colors ${
         active
-          ? "bg-foreground text-card"
-          : "text-foreground/75 hover:bg-surface hover:text-foreground"
+          ? "bg-[#ccfc4e] text-black shadow-[0_6px_18px_rgba(204,252,78,0.35)]"
+          : "text-foreground/65 hover:bg-[#f5f5f7] hover:text-foreground"
       }`}
     >
       <span className="opacity-90">{item.icon}</span>
