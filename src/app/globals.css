@@ -28,7 +28,7 @@
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: #111111;
-  --chart-2: #ccfc4e;
+  --chart-2: #b0b0b4;
   --chart-3: #8b8b90;
   --chart-4: #3a3a3a;
   --chart-5: #e8e8ea;
@@ -97,12 +97,11 @@ body {
   font-family: var(--font-montserrat);
 }
 
-/* Dashboard shell — soft wash like marketing, not flat grey */
+/* Dashboard shell — soft neutral wash, tiny brand hint */
 .dashboard-shell {
   background:
-    radial-gradient(ellipse 70% 45% at 12% -10%, rgba(204, 252, 78, 0.28), transparent 55%),
-    radial-gradient(ellipse 55% 40% at 100% 0%, rgba(17, 17, 17, 0.05), transparent 50%),
-    linear-gradient(180deg, #f7f7f8 0%, #f0f0f2 100%);
+    radial-gradient(ellipse 55% 35% at 8% -8%, rgba(204, 252, 78, 0.08), transparent 50%),
+    linear-gradient(180deg, #f7f7f8 0%, #f2f2f4 100%);
 }
 
 /* Banner: jednoduchý soft zoom-in, full-bleed od začátku */

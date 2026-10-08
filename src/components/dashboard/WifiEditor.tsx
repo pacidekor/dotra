@@ -36,7 +36,7 @@ export function WifiEditor({ wifi, onChange }: WifiEditorProps) {
             });
           }}
           className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${
-            active ? "bg-[#ccfc4e]" : "bg-border"
+            active ? "bg-[#111111]" : "bg-border"
           }`}
         >
           <span

@@ -48,7 +48,7 @@ const activityConfig = {
   },
   clicks: {
     label: "Prokliky",
-    color: "#ccfc4e",
+    color: "#b0b0b4",
   },
 } satisfies ChartConfig;
 
@@ -65,20 +65,14 @@ export function StatsPanel({ stats, links }: StatsPanelProps) {
   return (
     <section className="space-y-5">
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <StatCard
-          label="Návštěvy"
-          value={formatNumber(stats.visits)}
-          tone="lime"
-        />
+        <StatCard label="Návštěvy" value={formatNumber(stats.visits)} />
         <StatCard
           label="Načtení stránky"
           value={formatNumber(stats.pageViews)}
-          tone="ink"
         />
         <StatCard
           label="Prokliky celkem"
           value={formatNumber(stats.totalClicks)}
-          tone="soft"
         />
       </div>
 
@@ -242,7 +236,7 @@ export function StatsPanel({ stats, links }: StatsPanelProps) {
                 </div>
                 <div className="h-1.5 overflow-hidden rounded-full bg-[#ececef]">
                   <div
-                    className="h-full rounded-full bg-[#ccfc4e] transition-[width] duration-700 ease-out"
+                    className="h-full rounded-full bg-[#111111] transition-[width] duration-700 ease-out"
                     style={{ width: `${(clicks / maxClicks) * 100}%` }}
                   />
                 </div>
@@ -255,33 +249,12 @@ export function StatsPanel({ stats, links }: StatsPanelProps) {
   );
 }
 
-function StatCard({
-  label,
-  value,
-  tone,
-}: {
-  label: string;
-  value: string;
-  tone: "lime" | "ink" | "soft";
-}) {
-  const toneClass =
-    tone === "lime"
-      ? "border-[#ccfc4e]/70 bg-[#ccfc4e]"
-      : tone === "ink"
-        ? "border-black/90 bg-[#111111] text-white"
-        : "border-black/[0.06] bg-white/90";
-
-  const labelClass =
-    tone === "ink" ? "text-white/60" : "text-foreground/55";
-  const valueClass = tone === "ink" ? "text-white" : "text-foreground";
-
+function StatCard({ label, value }: { label: string; value: string }) {
   return (
-    <Card className={`rounded-2xl shadow-none ring-0 ${toneClass}`}>
+    <Card className="rounded-2xl border-black/[0.06] bg-white/90 shadow-none ring-0">
       <CardHeader className="pb-2">
-        <CardDescription className={labelClass}>{label}</CardDescription>
-        <CardTitle
-          className={`text-2xl tracking-tight tabular-nums ${valueClass}`}
-        >
+        <CardDescription className="text-foreground/55">{label}</CardDescription>
+        <CardTitle className="text-2xl tracking-tight text-foreground tabular-nums">
           {value}
         </CardTitle>
       </CardHeader>

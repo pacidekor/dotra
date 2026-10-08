@@ -211,7 +211,7 @@ export default function DashboardSettingsPage() {
           <button
             type="submit"
             disabled={passwordSaving || !password}
-            className="rounded-full bg-[#ccfc4e] px-5 py-2.5 text-sm font-medium text-black transition-opacity hover:opacity-85 disabled:opacity-70"
+            className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-70"
           >
             {passwordSaving ? "Ukládám…" : "Uložit heslo"}
           </button>

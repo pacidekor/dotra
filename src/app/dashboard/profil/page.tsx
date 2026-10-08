@@ -57,7 +57,7 @@ export default function DashboardProfilePage() {
             type="button"
             onClick={() => void save()}
             disabled={saving}
-            className="rounded-full bg-[#ccfc4e] px-5 py-2.5 text-sm font-medium text-black transition-opacity hover:opacity-85 disabled:opacity-70"
+            className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-70"
           >
             {saving ? "Ukládám…" : "Uložit"}
           </button>
@@ -140,7 +140,7 @@ export default function DashboardProfilePage() {
             type="button"
             onClick={() => void save()}
             disabled={saving}
-            className="rounded-full bg-[#ccfc4e] px-5 py-3 text-sm font-medium text-black disabled:opacity-70"
+            className="rounded-full bg-foreground px-5 py-3 text-sm font-medium text-white disabled:opacity-70"
           >
             {saving ? "Ukládám…" : "Uložit"}
           </button>

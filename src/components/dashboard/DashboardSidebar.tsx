@@ -82,7 +82,7 @@ export function DashboardSidebar() {
         <div className="mt-auto space-y-2">
           <Link
             href={publicHref}
-            className="block rounded-full bg-[#ccfc4e] px-3 py-2.5 text-center text-sm font-medium text-black transition-opacity hover:opacity-85"
+            className="block rounded-full bg-foreground px-3 py-2.5 text-center text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             Veřejný profil
           </Link>
@@ -149,7 +149,7 @@ export function DashboardSidebar() {
               <Link
                 href={publicHref}
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-full bg-[#ccfc4e] px-3 py-3 text-center text-sm font-medium text-black transition-opacity hover:opacity-85"
+                className="block rounded-full bg-foreground px-3 py-3 text-center text-sm font-medium text-white transition-opacity hover:opacity-90"
               >
                 Veřejný profil
               </Link>
@@ -190,7 +190,7 @@ function NavLink({
       onClick={onNavigate}
       className={`flex items-center gap-3 rounded-full px-3 py-2.5 text-sm font-medium transition-colors ${
         active
-          ? "bg-[#ccfc4e] text-black shadow-[0_6px_18px_rgba(204,252,78,0.35)]"
+          ? "bg-[#111111] text-white"
           : "text-foreground/65 hover:bg-[#f5f5f7] hover:text-foreground"
       }`}
     >
