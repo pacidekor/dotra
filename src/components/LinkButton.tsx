@@ -8,7 +8,12 @@ type LinkButtonProps = {
 };
 
 export function LinkButton({ link, index, onWifiClick }: LinkButtonProps) {
-  const isWifi = link.id === "wifi" && onWifiClick;
+  const isWifi =
+    Boolean(onWifiClick) &&
+    (link.id === "wifi" ||
+      link.icon === "wifi" ||
+      link.href === "#wifi" ||
+      link.href.startsWith("#wifi"));
   const isExternal = link.href.startsWith("http");
   const useSoft = index % 2 === 1;
 

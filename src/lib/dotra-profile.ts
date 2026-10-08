@@ -7,6 +7,9 @@ export type DotraProfileRow = {
   tagline: string;
   avatar_path: string | null;
   banner_path: string | null;
+  wifi_ssid: string | null;
+  wifi_password: string | null;
+  wifi_encryption: string | null;
   onboarding_completed_at: string | null;
 };
 
@@ -88,6 +91,14 @@ export async function uploadProfileImageFile(
 }
 
 export function profileFromRow(row: DotraProfileRow): Profile {
+  const ssid = row.wifi_ssid?.trim() || "";
+  const encryption =
+    row.wifi_encryption === "WEP" ||
+    row.wifi_encryption === "nopass" ||
+    row.wifi_encryption === "WPA"
+      ? row.wifi_encryption
+      : "WPA";
+
   return {
     name: row.display_name || "Váš profil",
     tagline: row.tagline || "Doplňte popisek profilu",
@@ -95,6 +106,13 @@ export function profileFromRow(row: DotraProfileRow): Profile {
       publicStorageUrl("avatars", row.avatar_path) ?? DEFAULT_AVATAR,
     bannerSrc:
       publicStorageUrl("banners", row.banner_path) ?? DEFAULT_BANNER,
+    wifi: ssid
+      ? {
+          ssid,
+          password: row.wifi_password || "",
+          encryption,
+        }
+      : undefined,
   };
 }
 

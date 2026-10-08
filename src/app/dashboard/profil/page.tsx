@@ -4,6 +4,7 @@ import { useState } from "react";
 import { LinksEditor } from "@/components/dashboard/LinksEditor";
 import { LivePreview } from "@/components/dashboard/LivePreview";
 import { ProfileEditor } from "@/components/dashboard/ProfileEditor";
+import { WifiEditor } from "@/components/dashboard/WifiEditor";
 import { useDashboard } from "@/components/dashboard/DashboardContext";
 
 export default function DashboardProfilePage() {
@@ -12,6 +13,7 @@ export default function DashboardProfilePage() {
     slug,
     setSlug,
     setProfile,
+    setWifi,
     setLinks,
     uploadImage,
     save,
@@ -94,6 +96,13 @@ export default function DashboardProfilePage() {
               onUploadImage={(kind, file) => void uploadImage(kind, file)}
               uploadingImage={uploadingImage}
             />
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-muted">
+              Wi‑Fi
+            </h2>
+            <WifiEditor wifi={state.profile.wifi} onChange={setWifi} />
           </section>
 
           <section className="space-y-3">

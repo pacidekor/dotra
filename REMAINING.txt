@@ -27,9 +27,10 @@ Priorita produkt (doporučené pořadí)
    - odhlášení přes supabase.auth.signOut()
    - změna hesla v nastavení
 
-3) Wi-Fi pro běžné DB profily
-   - teď funguje hlavně u dema /ukaplicky
-   - nastavení v dashboardu + zobrazení na veřejném profilu
+3) Wi-Fi pro běžné DB profily — HOTOTO (kód)
+   - nastavení v dashboardu + veřejný profil
+   - nutná migrace: supabase/migrations/20261008_dotra_wifi.sql
+     (spustit v Supabase SQL editoru, pokud ještě neběží)
 
 4) Reálná analytika
    - dashboard stats jsou mock

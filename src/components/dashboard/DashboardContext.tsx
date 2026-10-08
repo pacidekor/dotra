@@ -12,7 +12,7 @@ import {
   initialDashboardState,
   type DashboardState,
 } from "@/data/dashboard-mock";
-import type { Profile, ProfileLink } from "@/data/types";
+import type { Profile, ProfileLink, WifiConfig } from "@/data/types";
 import {
   slugify,
   uploadProfileImageFile,
@@ -27,6 +27,7 @@ type DashboardContextValue = {
   slug: string;
   setSlug: (slug: string) => void;
   setProfile: (profile: Profile) => void;
+  setWifi: (wifi: WifiConfig | undefined) => void;
   setLinks: (links: ProfileLink[]) => void;
   uploadImage: (kind: "avatar" | "banner", file: File) => Promise<void>;
   save: () => Promise<void>;
@@ -70,6 +71,13 @@ export function DashboardProvider({
 
   const setProfile = useCallback((profile: Profile) => {
     setState((prev) => ({ ...prev, profile }));
+  }, []);
+
+  const setWifi = useCallback((wifi: WifiConfig | undefined) => {
+    setState((prev) => ({
+      ...prev,
+      profile: { ...prev.profile, wifi },
+    }));
   }, []);
 
   const setLinks = useCallback((links: ProfileLink[]) => {
@@ -144,12 +152,21 @@ export function DashboardProvider({
       const slugValidationError = validateSlugInput(nextSlug);
       if (slugValidationError) throw new Error(slugValidationError);
 
+      const wifi = state.profile.wifi;
+      const wifiSsid = wifi?.ssid.trim() || null;
+      if (wifi !== undefined && !wifiSsid) {
+        throw new Error("Zadejte název Wi‑Fi sítě (SSID).");
+      }
+
       const { error: profileError } = await supabase
         .from("dotra_profiles")
         .update({
           display_name: state.profile.name,
           tagline: state.profile.tagline,
           slug: nextSlug,
+          wifi_ssid: wifiSsid,
+          wifi_password: wifiSsid ? wifi?.password ?? "" : null,
+          wifi_encryption: wifiSsid ? wifi?.encryption || "WPA" : null,
         })
         .eq("id", profileId);
 
@@ -157,14 +174,37 @@ export function DashboardProvider({
         if (profileError.code === "23505") {
           throw new Error("Tento slug už někdo používá.");
         }
+        if (
+          profileError.message?.toLowerCase().includes("wifi_ssid") ||
+          profileError.message?.toLowerCase().includes("column")
+        ) {
+          throw new Error(
+            "Wi‑Fi sloupce v DB ještě nejsou. Spusť migraci 20261008_dotra_wifi.sql v Supabase.",
+          );
+        }
         throw profileError;
       }
 
       setSlugState(nextSlug);
 
+      let linksToSave = state.links;
+      if (wifiSsid && !linksToSave.some((link) => link.icon === "wifi")) {
+        linksToSave = [
+          ...linksToSave,
+          {
+            id: `wifi-${Date.now()}`,
+            label: "Připojit se na Wi‑Fi",
+            href: "#wifi",
+            description: "Rychlé připojení k naší síti",
+            icon: "wifi" as const,
+          },
+        ];
+        setState((prev) => ({ ...prev, links: linksToSave }));
+      }
+
       await supabase.from("dotra_links").delete().eq("profile_id", profileId);
 
-      const rows = state.links.map((link, index) => ({
+      const rows = linksToSave.map((link, index) => ({
         profile_id: profileId,
         label: link.label,
         href: link.href,
@@ -187,7 +227,14 @@ export function DashboardProvider({
     } finally {
       setSaving(false);
     }
-  }, [profileId, slug, state.links, state.profile.name, state.profile.tagline]);
+  }, [
+    profileId,
+    slug,
+    state.links,
+    state.profile.name,
+    state.profile.tagline,
+    state.profile.wifi,
+  ]);
 
   const value = useMemo(
     () => ({
@@ -197,6 +244,7 @@ export function DashboardProvider({
       slug,
       setSlug,
       setProfile,
+      setWifi,
       setLinks,
       uploadImage,
       save,
@@ -212,6 +260,7 @@ export function DashboardProvider({
       slug,
       setSlug,
       setProfile,
+      setWifi,
       setLinks,
       uploadImage,
       save,

@@ -17,6 +17,9 @@ function emptyProfile(userId: string): DotraProfileRow {
     tagline: "",
     avatar_path: null,
     banner_path: null,
+    wifi_ssid: null,
+    wifi_password: null,
+    wifi_encryption: null,
     onboarding_completed_at: null,
   };
 }
