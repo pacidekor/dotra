@@ -21,11 +21,11 @@ Priorita produkt (doporučené pořadí)
    - kontrola uniqueness + rezervované slugy
    - zobrazení aktuální veřejné URL
 
-2) Nastavení účtu (dashboard /nastaveni)
+2) Nastavení účtu (dashboard /nastaveni) — HOTOTO
    - reálná veřejná URL ze slug
    - reálný e-mail přihlášeného uživatele
-   - odhlášení přes supabase.auth.signOut() (teď jen redirect)
-   - změna hesla (volitelně napojit na existující reset flow)
+   - odhlášení přes supabase.auth.signOut()
+   - změna hesla v nastavení
 
 3) Wi-Fi pro běžné DB profily
    - teď funguje hlavně u dema /ukaplicky

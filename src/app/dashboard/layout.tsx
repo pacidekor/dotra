@@ -50,6 +50,7 @@ export default async function DashboardLayout({
   return (
     <DashboardProvider
       profileId={user.id}
+      userEmail={user.email ?? ""}
       slug={row.slug}
       initialProfile={profileFromRow(row)}
       initialLinks={linksFromRows((links ?? []) as DotraLinkRow[])}

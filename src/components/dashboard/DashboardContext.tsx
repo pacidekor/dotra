@@ -23,6 +23,7 @@ import { createClient } from "@/utils/supabase/client";
 type DashboardContextValue = {
   state: DashboardState;
   profileId: string;
+  userEmail: string;
   slug: string;
   setSlug: (slug: string) => void;
   setProfile: (profile: Profile) => void;
@@ -40,6 +41,7 @@ const DashboardContext = createContext<DashboardContextValue | null>(null);
 type DashboardProviderProps = {
   children: ReactNode;
   profileId: string;
+  userEmail: string;
   slug: string | null;
   initialProfile: Profile;
   initialLinks: ProfileLink[];
@@ -48,6 +50,7 @@ type DashboardProviderProps = {
 export function DashboardProvider({
   children,
   profileId,
+  userEmail,
   slug: initialSlug,
   initialProfile,
   initialLinks,
@@ -190,6 +193,7 @@ export function DashboardProvider({
     () => ({
       state,
       profileId,
+      userEmail,
       slug,
       setSlug,
       setProfile,
@@ -204,6 +208,7 @@ export function DashboardProvider({
     [
       state,
       profileId,
+      userEmail,
       slug,
       setSlug,
       setProfile,
